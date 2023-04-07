@@ -3808,7 +3808,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -3829,7 +3829,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -3850,7 +3850,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -3871,7 +3871,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -3892,7 +3892,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -3913,7 +3913,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -3921,6 +3921,27 @@ TextureImporter:
       bones: []
       spriteID: 35c84b88bea88c54eafd6a9cbc7083ff
       internalID: 1520131537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RA_Pyramid_182
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 962
+        width: 16
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24ab1316e519c5f4d84c8681152f0e4e
+      internalID: -1744149580
       vertices: []
       indices: 
       edges: []
@@ -3937,10 +3958,10 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       RA_Pyramid_90: -1587654095
-      RA_Pyramid_166: 1739813614
       RA_Pyramid_16: 717817912
       RA_Pyramid_74: -1618965959
       RA_Pyramid_104: -411635864
+      RA_Pyramid_10: -1298017148
       RA_Pyramid_4: 1073510181
       RA_Pyramid_140: 1297721687
       RA_Pyramid_40: -2116004446
@@ -3954,8 +3975,8 @@ TextureImporter:
       RA_Pyramid_46: -1008681882
       RA_Pyramid_153: -650286513
       RA_Pyramid_27: -431040837
-      RA_Pyramid_36: 972769554
       RA_Pyramid_69: -2027307484
+      RA_Pyramid_36: 972769554
       RA_Pyramid_52: 2098988241
       RA_Pyramid_58: -298008986
       RA_Pyramid_138: 505390592
@@ -4052,6 +4073,7 @@ TextureImporter:
       RA_Pyramid_127: -65186968
       RA_Pyramid_170: 859138401
       RA_Pyramid_163: 1620924699
+      RA_Pyramid_182: -1744149580
       RA_Pyramid_8: -967393155
       RA_Pyramid_79: 1402036382
       RA_Pyramid_151: -1672406651
@@ -4113,11 +4135,11 @@ TextureImporter:
       RA_Pyramid_132: 190426772
       RA_Pyramid_62: 1422192552
       RA_Pyramid_50: 368874699
-      RA_Pyramid_120: 1570128213
-      RA_Pyramid_81: -535888138
-      RA_Pyramid_10: -1298017148
       RA_Pyramid_48: -1016831498
       RA_Pyramid_55: 1086006328
+      RA_Pyramid_81: -535888138
+      RA_Pyramid_120: 1570128213
+      RA_Pyramid_166: 1739813614
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
