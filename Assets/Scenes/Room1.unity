@@ -6598,6 +6598,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loreEntryImage: {fileID: 875640409}
   loreEntry: {fileID: 1641441502}
+  amplitude: 0.2
+  speed: 2
 --- !u!50 &1641441507
 Rigidbody2D:
   serializedVersion: 4
