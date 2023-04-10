@@ -3958,10 +3958,10 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       RA_Pyramid_90: -1587654095
-      RA_Pyramid_120: 1570128213
       RA_Pyramid_16: 717817912
       RA_Pyramid_74: -1618965959
       RA_Pyramid_104: -411635864
+      RA_Pyramid_10: -1298017148
       RA_Pyramid_4: 1073510181
       RA_Pyramid_140: 1297721687
       RA_Pyramid_40: -2116004446
@@ -3975,11 +3975,11 @@ TextureImporter:
       RA_Pyramid_46: -1008681882
       RA_Pyramid_153: -650286513
       RA_Pyramid_27: -431040837
-      RA_Pyramid_69: -2027307484
-      RA_Pyramid_138: 505390592
-      RA_Pyramid_52: 2098988241
       RA_Pyramid_36: 972769554
+      RA_Pyramid_69: -2027307484
+      RA_Pyramid_52: 2098988241
       RA_Pyramid_58: -298008986
+      RA_Pyramid_138: 505390592
       RA_Pyramid_172: 885877282
       RA_Pyramid_35: 2105172027
       RA_Pyramid_24: -781813735
@@ -4135,11 +4135,11 @@ TextureImporter:
       RA_Pyramid_132: 190426772
       RA_Pyramid_62: 1422192552
       RA_Pyramid_50: 368874699
-      RA_Pyramid_48: -1016831498
-      RA_Pyramid_55: 1086006328
-      RA_Pyramid_10: -1298017148
-      RA_Pyramid_166: 1739813614
+      RA_Pyramid_120: 1570128213
       RA_Pyramid_81: -535888138
+      RA_Pyramid_55: 1086006328
+      RA_Pyramid_48: -1016831498
+      RA_Pyramid_166: 1739813614
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
