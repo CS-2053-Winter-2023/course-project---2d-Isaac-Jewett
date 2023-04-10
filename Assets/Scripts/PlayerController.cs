@@ -8,12 +8,16 @@ public class PlayerController : MonoBehaviour
 {
     private Vector3 velocity;
 
+    public GameObject loreEntry;
+    private LoreController loreController;
+
     private SpriteRenderer rend;
     private Animator anim;
     public float speed = 2.0f;
     public Camera camera;
     void Start()
     {
+        loreController = loreEntry.GetComponent<LoreController>();
         velocity = new Vector3(0f, 0f, 0f);
         rend = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
@@ -85,5 +89,9 @@ public class PlayerController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        if (other.CompareTag("Lore")) {
+            loreController.SetLoreActive();
+        }
+
     }
 }
