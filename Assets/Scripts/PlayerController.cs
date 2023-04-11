@@ -41,29 +41,26 @@ public class PlayerController : MonoBehaviour
 
         //set the direction based on  input
         //note this is a simplified version //in assignment 1 we used a the Input Handler System
-        if (Input.GetKey("left"))
+        velocity = new Vector3(0f, 0f, 0f);
+        if (Input.GetKey("a"))
         {
-            velocity = new Vector3(-1f, 0f, 0f);
+            velocity = new Vector3(velocity.x -1f * speed, velocity.y, velocity.z);
           //  anim.Play("PacManLeft");
         }
-        else if (Input.GetKey("right"))
+        if (Input.GetKey("d"))
         {
-            velocity = new Vector3(1f, 0f, 0f);
-           // anim.Play("PacManRight");
+            velocity = new Vector3(velocity.x + 1f * speed, velocity.y, velocity.z);
+            // anim.Play("PacManRight");
         }
-        else if (Input.GetKey("down"))
+        if (Input.GetKey("s"))
         {
-            velocity = new Vector3(0f, -1f, 0f);
-           // anim.Play("PacManDown");
+            velocity = new Vector3(velocity.x, velocity.y - 1f * speed, velocity.z);
+            // anim.Play("PacManDown");
         }
-        else if (Input.GetKey("up"))
+        if (Input.GetKey("w"))
         {
-            velocity = new Vector3(0f, 1f, 0f);
-           // anim.Play("PacManUp");
-        }
-        else
-        {
-            velocity = new Vector3(0f, 0f, 0f);
+            velocity = new Vector3(velocity.x, velocity.y + 1f * speed, velocity.z);
+            // anim.Play("PacManUp");
         }
 
         //make sure the obect is inside the borders... if edge is hit reverse direction
@@ -91,6 +88,10 @@ public class PlayerController : MonoBehaviour
     {
         if (other.CompareTag("Lore")) {
             loreController.SetLoreActive();
+        }
+        else
+        {
+            velocity = new Vector3(-velocity.x, -velocity.y, -velocity.z);
         }
 
     }
