@@ -9,15 +9,20 @@ public class PlayerController : MonoBehaviour
     private Vector3 velocity;
 
     public GameObject loreEntry;
+    public GameObject exitTrigger;
     private LoreController loreController;
 
     private SpriteRenderer rend;
     private Animator anim;
     public float speed = 2.0f;
-    public Camera camera;
+    new public Camera camera;
     void Start()
     {
         loreController = loreEntry.GetComponent<LoreController>();
+        if(SceneManager.GetActiveScene().name == "Room1"){
+            exitTrigger.SetActive(false);
+        }
+      
         velocity = new Vector3(0f, 0f, 0f);
         rend = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
@@ -26,19 +31,6 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        // calculate location of screen borders
-        // this will make more sense after we discuss vectors and 3D
-        var dist = (transform.position - Camera.main.transform.position).z;
-        var leftBorder = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, dist)).x;
-        var rightBorder = Camera.main.ViewportToWorldPoint(new Vector3(1, 0, dist)).x;
-        var bottomBorder = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, dist)).y;
-        var topBorder = Camera.main.ViewportToWorldPoint(new Vector3(0, 1, dist)).y;
-
-        //get the width of the object
-        float width = rend.bounds.size.x;
-        float height = rend.bounds.size.y;
-
         //set the direction based on  input
         //note this is a simplified version //in assignment 1 we used a the Input Handler System
         velocity = new Vector3(0f, 0f, 0f);
@@ -63,23 +55,6 @@ public class PlayerController : MonoBehaviour
             // anim.Play("PacManUp");
         }
 
-        //make sure the obect is inside the borders... if edge is hit reverse direction
-        if ((transform.position.x <= leftBorder + width / 2.0) && velocity.x < 0f)
-        {
-            velocity = new Vector3(0f, 0f, 0f);
-        }
-        if ((transform.position.x >= rightBorder - width / 2.0) && velocity.x > 0f)
-        {
-            velocity = new Vector3(0f, 0f, 0f);
-        }
-        if ((transform.position.y <= bottomBorder + height / 2.0) && velocity.y < 0f)
-        {
-            velocity = new Vector3(0f, 0f, 0f);
-        }
-        if ((transform.position.y >= topBorder - height / 2.0) && velocity.y > 0f)
-        {
-            velocity = new Vector3(0f, 0f, 0f);
-        }
         transform.position = transform.position + velocity * Time.deltaTime * speed;
         camera.transform.position = new Vector3(transform.position.x, transform.position.y, -10f);
     }
@@ -89,9 +64,40 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag("Lore")) {
             loreController.SetLoreActive();
         }
-        else
+        if (other.CompareTag("Exit"))
         {
-            velocity = new Vector3(-velocity.x, -velocity.y, -velocity.z);
+            if (SceneManager.GetActiveScene().name == "Room1")
+            {
+                SceneManager.LoadScene("Room2");
+            }
+            if (SceneManager.GetActiveScene().name == "Room2")
+            {
+                SceneManager.LoadScene("Room3");
+            }
+            if (SceneManager.GetActiveScene().name == "Room3")
+            {
+                SceneManager.LoadScene("Room4");
+            }
+            if (SceneManager.GetActiveScene().name == "Room4")
+            {
+                SceneManager.LoadScene("Room5");
+            }
+            if (SceneManager.GetActiveScene().name == "Room5")
+            {
+                SceneManager.LoadScene("Room6");
+            }
+            if (SceneManager.GetActiveScene().name == "Room6")
+            {
+                SceneManager.LoadScene("Room7");
+            }
+            if (SceneManager.GetActiveScene().name == "Room7")
+            {
+                SceneManager.LoadScene("Room8");
+            }
+            if (SceneManager.GetActiveScene().name == "Room8")
+            {
+                SceneManager.LoadScene("End");
+            }
         }
 
     }

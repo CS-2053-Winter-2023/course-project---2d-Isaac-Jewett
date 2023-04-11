@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LoreController : MonoBehaviour
 {
 
     public GameObject loreEntryImage;
     public GameObject loreEntry;
+    public GameObject exitTrigger;
     private bool isLoreActive = false;
 
     public float amplitude; // Height of the float
@@ -38,6 +40,10 @@ public class LoreController : MonoBehaviour
 
     public void SetLoreActive()
     {
+        if (SceneManager.GetActiveScene().name == "Room1")
+        {
+            exitTrigger.SetActive(true);
+        }
         foreach (Level1Mummy myScript in myScriptReferences)
         {
             myScript.MummyExists = true;
