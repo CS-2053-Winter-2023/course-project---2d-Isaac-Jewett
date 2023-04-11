@@ -6,56 +6,85 @@ using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
-    private Vector3 velocity;
+
+    //Components
+    Rigidbody2D rb;
 
     public GameObject loreEntry;
     public GameObject exitTrigger;
     private LoreController loreController;
+    
+    //Movement
+    public float speed = 2.0f;
+    public float speedLimiter = 0.7f;
+    private float inputHorizontal;
+    private float inputVertical;
 
+    new public Camera camera;
+
+    // Animations and states
     private SpriteRenderer rend;
     private Animator anim;
-    public float speed = 2.0f;
-    new public Camera camera;
+    string currentState;
+    const string PLAYER_IDLE = "Player_Idle";
+    const string PLAYER_RIGHT = "Player_Right";
+    const string PLAYER_LEFT = "Player_Left";
+    const string PLAYER_UP = "Player_Up";
+    const string PLAYER_DOWN = "Player_Down";
+
     void Start()
     {
+        rb = gameObject.GetComponent<Rigidbody2D>();
         loreController = loreEntry.GetComponent<LoreController>();
         if(SceneManager.GetActiveScene().name == "Room1"){
             exitTrigger.SetActive(false);
         }
-      
-        velocity = new Vector3(0f, 0f, 0f);
         rend = GetComponent<SpriteRenderer>();
-        anim = GetComponent<Animator>();
+        anim = gameObject.GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //set the direction based on  input
-        //note this is a simplified version //in assignment 1 we used a the Input Handler System
-        velocity = new Vector3(0f, 0f, 0f);
-        if (Input.GetKey("a"))
-        {
-            velocity = new Vector3(velocity.x -1f * speed, velocity.y, velocity.z);
-          //  anim.Play("PacManLeft");
-        }
-        if (Input.GetKey("d"))
-        {
-            velocity = new Vector3(velocity.x + 1f * speed, velocity.y, velocity.z);
-            // anim.Play("PacManRight");
-        }
-        if (Input.GetKey("s"))
-        {
-            velocity = new Vector3(velocity.x, velocity.y - 1f * speed, velocity.z);
-            // anim.Play("PacManDown");
-        }
-        if (Input.GetKey("w"))
-        {
-            velocity = new Vector3(velocity.x, velocity.y + 1f * speed, velocity.z);
-            // anim.Play("PacManUp");
-        }
+        
+    }
 
-        transform.position = transform.position + velocity * Time.deltaTime * speed;
+    void FixedUpdate()
+    {
+        inputHorizontal = Input.GetAxisRaw("Horizontal");
+        inputVertical = Input.GetAxisRaw("Vertical");
+        if (inputHorizontal != 0 || inputVertical != 0)
+        {
+            if (inputHorizontal != 0 && inputVertical != 0)
+            {
+                inputHorizontal *= speedLimiter;
+                inputVertical *= speedLimiter;
+            }
+
+            rb.velocity = new Vector2(inputHorizontal * speed, inputVertical * speed);
+
+            if (inputHorizontal > 0)
+            {
+                ChangeAnimationState(PLAYER_RIGHT);
+            }
+            else if (inputHorizontal < 0)
+            {
+                ChangeAnimationState(PLAYER_LEFT);
+            }
+            else if (inputVertical > 0)
+            {
+                ChangeAnimationState(PLAYER_UP);
+            }
+            else if (inputVertical < 0)
+            {
+                ChangeAnimationState(PLAYER_DOWN);
+            }
+        }
+        else
+        {
+            rb.velocity = new Vector2(0,0);
+            ChangeAnimationState(PLAYER_IDLE);
+        }
         camera.transform.position = new Vector3(transform.position.x, transform.position.y, -10f);
     }
 
@@ -100,5 +129,19 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+    }
+
+    //Animation state changer
+    void ChangeAnimationState(string newState)
+    {
+
+        //Stop animation from interupting itself
+        if (currentState == newState) return;
+
+        //Play new animation
+        anim.Play(newState);
+
+        // Update current state
+        currentState = newState;
     }
 }

@@ -323,6 +323,26 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5639658602799364868, guid: cddf3dac5577e644fb4f8eb5215ed7af, type: 3}
   m_PrefabInstance: {fileID: 7080056595881499957}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &216500788
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 216500782}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9875c19a836779249be2248800c2a14a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &247601811
 GameObject:
   m_ObjectHideFlags: 0
@@ -8770,6 +8790,10 @@ PrefabInstance:
       propertyPath: exitTrigger
       value: 
       objectReference: {fileID: 542171294}
+    - target: {fileID: 5997600300192784894, guid: cddf3dac5577e644fb4f8eb5215ed7af, type: 3}
+      propertyPath: speedLimiter
+      value: 0.7
+      objectReference: {fileID: 0}
     - target: {fileID: 6631678678472774669, guid: cddf3dac5577e644fb4f8eb5215ed7af, type: 3}
       propertyPath: m_Size.x
       value: 0.1205745
