@@ -15,12 +15,17 @@ public class PlayerController : MonoBehaviour
     private Animator anim;
     public float speed = 2.0f;
     public Camera camera;
+
+    Level1Mummy[] myScriptReferences;
+
     void Start()
     {
         loreController = loreEntry.GetComponent<LoreController>();
         velocity = new Vector3(0f, 0f, 0f);
         rend = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
+        myScriptReferences = FindObjectsOfType<Level1Mummy>();
+
     }
 
     // Update is called once per frame
@@ -88,6 +93,30 @@ public class PlayerController : MonoBehaviour
     {
         if (other.CompareTag("Lore")) {
             loreController.SetLoreActive();
+        }   
+        else if (other.CompareTag("TopT"))  {
+            foreach (Level1Mummy myScript in myScriptReferences)
+            {
+                if (myScript.MummyLevel == 3)   {
+                    myScript.MummyLevel = 0;
+                }
+            }
+        }   
+        else if (other.CompareTag("MidT"))  {
+            foreach (Level1Mummy myScript in myScriptReferences)
+            {
+                if (myScript.MummyLevel == 2)   {
+                    myScript.MummyLevel = 0;
+                }
+            }            
+        }   
+        else if (other.CompareTag("LowT"))  {
+            foreach (Level1Mummy myScript in myScriptReferences)
+            {
+                if (myScript.MummyLevel == 1)   {
+                    myScript.MummyLevel = 0;
+                }
+            }            
         }
         else
         {
