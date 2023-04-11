@@ -5,7 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - Lore
-  - Exit
+  - TopT
+  - MidT
+  - LowT
+  - LowM
+  - MidM
+  - TopM
   layers:
   - Default
   - TransparentFX
