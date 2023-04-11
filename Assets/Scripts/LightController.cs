@@ -9,6 +9,12 @@ public class LightController : MonoBehaviour
     public GameObject player;
     public GameObject playerLight;
     public GameObject flashlight;
+    public GameObject globalLight;
+
+    private void Start()
+    {
+        globalLight.SetActive(false);
+    }
 
     // Update is called once per frame
     void LateUpdate()
