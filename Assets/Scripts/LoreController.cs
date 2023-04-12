@@ -30,7 +30,10 @@ public class LoreController : MonoBehaviour
     {
         if (Input.GetKeyDown("space") && isLoreActive)
         {
-
+            foreach (Level1Mummy myScript in myScriptReferences)
+            {
+                myScript.MummyExists = true;
+            }
             Time.timeScale = 1;
             loreEntryImage.SetActive(false);
             Destroy(loreEntry);
@@ -44,10 +47,7 @@ public class LoreController : MonoBehaviour
         {
             exitTrigger.SetActive(true);
         }
-        foreach (Level1Mummy myScript in myScriptReferences)
-        {
-            myScript.MummyExists = true;
-        }
+
         isLoreActive = true;
         loreEntryImage.SetActive(true);
         Time.timeScale = 0;
