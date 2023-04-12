@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EntryController : MonoBehaviour
 {
-
+    public GameObject cover;
     public GameObject entry1;
     public GameObject entry2;
     public GameObject entry3;
@@ -13,6 +13,7 @@ public class EntryController : MonoBehaviour
     public GameObject entry6;
     public GameObject entry7;
     public GameObject entry8;
+
 
     public enum CurrentEntry { 
     
@@ -40,7 +41,7 @@ public class EntryController : MonoBehaviour
         entry6.SetActive(false);
         entry7.SetActive(false);
         entry8.SetActive(false);
-
+        cover.SetActive(false);
 
     }
 
@@ -50,7 +51,9 @@ public class EntryController : MonoBehaviour
 
         if (currentEntry == CurrentEntry.entry1)
         {
+
             entry1.SetActive(true);
+            
 
         } else if (currentEntry == CurrentEntry.entry2) 
         {
@@ -90,4 +93,7 @@ public class EntryController : MonoBehaviour
 
 
     }
+
+
+
 }
