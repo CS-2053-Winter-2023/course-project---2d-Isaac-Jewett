@@ -11,6 +11,7 @@ TagManager:
   - LowM
   - MidM
   - TopM
+  - Exit
   layers:
   - Default
   - TransparentFX
