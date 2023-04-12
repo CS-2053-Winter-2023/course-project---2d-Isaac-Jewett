@@ -14,20 +14,8 @@ public class PlayerController : MonoBehaviour
 
     private SpriteRenderer rend;
     private Animator anim;
-<<<<<<< Updated upstream
     public float speed = 2.0f;
     new public Camera camera;
-=======
-    string currentState;
-    const string PLAYER_IDLE = "Player_Idle";
-    const string PLAYER_RIGHT = "Player_Right";
-    const string PLAYER_LEFT = "Player_Left";
-    const string PLAYER_UP = "Player_Up";
-    const string PLAYER_DOWN = "Player_Down";
-    Level1Mummy[] myScriptReferences;
-
-
->>>>>>> Stashed changes
     void Start()
     {
         loreController = loreEntry.GetComponent<LoreController>();
@@ -37,12 +25,7 @@ public class PlayerController : MonoBehaviour
       
         velocity = new Vector3(0f, 0f, 0f);
         rend = GetComponent<SpriteRenderer>();
-<<<<<<< Updated upstream
         anim = GetComponent<Animator>();
-=======
-        anim = gameObject.GetComponent<Animator>();
-        myScriptReferences = FindObjectsOfType<Level1Mummy>();
->>>>>>> Stashed changes
     }
 
     // Update is called once per frame
@@ -116,32 +99,6 @@ public class PlayerController : MonoBehaviour
                 SceneManager.LoadScene("End");
             }
         }
-
-        if (other.CompareTag("TopT"))  {
-            foreach (Level1Mummy myScript in myScriptReferences)
-            {
-                if (myScript.MummyLevel == 3)   {
-                    myScript.MummyLevel = 0;
-                }
-            }
-        }   
-        else if (other.CompareTag("MidT"))  {
-            foreach (Level1Mummy myScript in myScriptReferences)
-            {
-                if (myScript.MummyLevel == 2)   {
-                    myScript.MummyLevel = 0;
-                }
-            }            
-        }   
-        else if (other.CompareTag("LowT"))  {
-            foreach (Level1Mummy myScript in myScriptReferences)
-            {
-                if (myScript.MummyLevel == 1)   {
-                    myScript.MummyLevel = 0;
-                }
-            }            
-        }
-
 
     }
 }
