@@ -99,31 +99,45 @@ public class PlayerController : MonoBehaviour
         {
             if (SceneManager.GetActiveScene().name == "Room1")
             {
-                SceneManager.LoadScene("Room2");
+                EntryController.nextLevel = "Room2";
+                EntryController.currentEntry = EntryController.CurrentEntry.entry2;
+                SceneManager.LoadScene("JournalEntries");
             }
             if (SceneManager.GetActiveScene().name == "Room2")
             {
-                SceneManager.LoadScene("Room3");
+                EntryController.nextLevel = "Room3";
+                EntryController.currentEntry = EntryController.CurrentEntry.entry3;
+                SceneManager.LoadScene("JournalEntries");
             }
             if (SceneManager.GetActiveScene().name == "Room3")
             {
-                SceneManager.LoadScene("Room4");
+                EntryController.nextLevel = "Room4";
+                EntryController.currentEntry = EntryController.CurrentEntry.entry4;
+                SceneManager.LoadScene("JournalEntries");
             }
             if (SceneManager.GetActiveScene().name == "Room4")
             {
-                SceneManager.LoadScene("Room5");
+                EntryController.nextLevel = "Room5";
+                EntryController.currentEntry = EntryController.CurrentEntry.entry5;
+                SceneManager.LoadScene("JournalEntries");
             }
             if (SceneManager.GetActiveScene().name == "Room5")
             {
-                SceneManager.LoadScene("Room6");
+                EntryController.nextLevel = "Room6";
+                EntryController.currentEntry = EntryController.CurrentEntry.entry6;
+                SceneManager.LoadScene("JournalEntries");
             }
             if (SceneManager.GetActiveScene().name == "Room6")
             {
-                SceneManager.LoadScene("Room7");
+                EntryController.nextLevel = "Room7";
+                EntryController.currentEntry = EntryController.CurrentEntry.entry7;
+                SceneManager.LoadScene("JournalEntries");
             }
             if (SceneManager.GetActiveScene().name == "Room7")
             {
-                SceneManager.LoadScene("Room8");
+                EntryController.nextLevel = "Room8";
+                EntryController.currentEntry = EntryController.CurrentEntry.entry8;
+                SceneManager.LoadScene("JournalEntries");
             }
             if (SceneManager.GetActiveScene().name == "Room8")
             {

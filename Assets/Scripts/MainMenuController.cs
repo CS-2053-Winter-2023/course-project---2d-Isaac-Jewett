@@ -8,7 +8,9 @@ public class MainMenuController : MonoBehaviour
 {
     public void playGame() 
     {
-        SceneManager.LoadScene("Room1");
+        EntryController.nextLevel = "Room1";
+        EntryController.currentEntry = EntryController.CurrentEntry.entry1;
+        SceneManager.LoadScene("JournalEntries");
     }
 
     public void LevelSelect()
