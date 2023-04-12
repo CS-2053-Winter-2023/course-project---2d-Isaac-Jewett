@@ -66,10 +66,12 @@ public class PlayerController : MonoBehaviour
             if (inputHorizontal > 0)
             {
                 ChangeAnimationState(PLAYER_RIGHT);
+                rend.flipX = false;
             }
             else if (inputHorizontal < 0)
             {
-                ChangeAnimationState(PLAYER_LEFT);
+                ChangeAnimationState(PLAYER_RIGHT);
+                rend.flipX = true;
             }
             else if (inputVertical > 0)
             {
