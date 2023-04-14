@@ -24,6 +24,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Room3.unity
     guid: d4348c74f1eb27a418fc096a6d23a1e3
   - enabled: 1
+    path: Assets/Scenes/Room4.unity
+    guid: ed092ad95879d5140b9f16e036094ea9
+  - enabled: 1
     path: Assets/Scenes/JournalEntries.unity
     guid: 6b1314403a7e29942b3cb5c4cae046cd
+  - enabled: 1
+    path: Assets/Scenes/GameOver.unity
+    guid: 751c782c090f4ec46af813de01becf76
   m_configObjects: {}
