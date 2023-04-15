@@ -29,8 +29,8 @@ public class EntryController : MonoBehaviour
     
     }
 
-    public static CurrentEntry currentEntry;
-    public static string nextLevel;
+    public static CurrentEntry currentEntry = CurrentEntry.entry1;
+    public static string nextLevel = "Room1";
 
     private bool isDone;
 
