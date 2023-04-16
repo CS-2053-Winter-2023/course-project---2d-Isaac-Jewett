@@ -27,30 +27,31 @@ public class MummyController : MonoBehaviour
 
     }
 
-    void Update()
+void Update()
+{
+    Vector2 directionToPlayer = (player.position - transform.position).normalized;
+    float angleToPlayer = Vector2.Angle(frontDirection.up, directionToPlayer); // Use child object's forward direction
+    float distanceToPlayer = Vector2.Distance(transform.position, player.position);
+
+    // Raycast to detect if there is a wall between the mummy and the player
+    RaycastHit2D hit = Physics2D.Raycast(transform.position, directionToPlayer, distanceToPlayer, LayerMask.GetMask("Walls"));
+
+    if (hit.collider != null)
     {
-        Vector2 directionToPlayer = (player.position - transform.position).normalized;
-        float angleToPlayer = Vector2.Angle(frontDirection.up, directionToPlayer); // Use child object's forward direction
-        float distanceToPlayer = Vector2.Distance(transform.position, player.position);
-
-        // Raycast to detect if there is a wall between the mummy and the player
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, directionToPlayer, distanceToPlayer, LayerMask.GetMask("Walls"));
-
-        if (hit.collider != null)
-        {
         // If there is a wall, and the wall is tagged as "Walls", stop chasing
-            if (hit.collider.CompareTag("Walls"))
-            {
-                Debug.Log("Test");
-                isChasing = false;
-                animator.SetBool("isChasing", false);
-            }
-        }
-        if (Vector2.Distance(transform.position, player.position) < visionRange && angleToPlayer < fieldOfView / 2 && !isChasing)
+        if (hit.collider.CompareTag("Walls"))
         {
-            isChasing = true;
-            animator.SetBool("isChasing", true);
+            isChasing = false;
+            animator.SetTrigger("EndChase");
+            return; // Added return statement to exit the method early
         }
+    }
+
+    if (Vector2.Distance(transform.position, player.position) < visionRange && angleToPlayer < fieldOfView / 2 && !isChasing)
+    {
+        isChasing = true;
+        animator.SetTrigger("StartChase");
+    }
 
         if (isChasing)
         {
@@ -94,29 +95,21 @@ public class MummyController : MonoBehaviour
 
         if (!isChasing)
         {
-            animator.SetBool("isChasing", false);
+        animator.SetTrigger("EndChase");
         }
 
         if (angleToPlayer >= fieldOfView / 2)
         {
             isChasing = false;
-            animator.SetBool("isChasing", false);
+            animator.SetTrigger("EndChase");
         }
-    }
-
-    // Modify this method to stop chasing after a certain duration
-    IEnumerator StopChasing()
-    {
-        yield return new WaitForSeconds(5f); // Change the duration as desired
-        isChasing = false;
-        animator.SetBool("isChasing", false);
     }
 
     // Call this method to start chasing the player
     void StartChasing()
     {
         isChasing = true;
-        animator.SetBool("isChasing", true);
-        StartCoroutine(StopChasing());
+        animator.SetTrigger("StartChase");
+        Debug.Log(isChasing);
     }
 }

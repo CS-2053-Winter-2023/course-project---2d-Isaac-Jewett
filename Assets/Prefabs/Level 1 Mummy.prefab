@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 2968833337407431173}
   - component: {fileID: 9077321261493172486}
   - component: {fileID: 5075781961587274968}
+  - component: {fileID: 6238184979184511247}
   m_Layer: 0
   m_Name: Level 1 Mummy
   m_TagString: Untagged
@@ -182,3 +183,27 @@ MonoBehaviour:
   patrolPoints:
   - {x: -2, y: -1.4}
   - {x: 2, y: -1.4}
+  Mummy: {fileID: 0}
+  MummyExists: 0
+  MummyLevel: 0
+  MummyStatic: 0
+--- !u!95 &6238184979184511247
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6135807614784206349}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c52c8b1a7e450bc4aa30db1b33a8fa58, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
