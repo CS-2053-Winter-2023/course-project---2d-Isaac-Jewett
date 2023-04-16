@@ -12,6 +12,7 @@ TagManager:
   - MidM
   - TopM
   - Exit
+  - Walls
   layers:
   - Default
   - TransparentFX
