@@ -32,6 +32,11 @@ public class PlayerController : MonoBehaviour
     const string PLAYER_UP = "Player_Up";
     const string PLAYER_DOWN = "Player_Down";
 
+    // Audio
+    private AudioSource audioSource;
+    public float stepInterval = 1f;
+    private float stepTimer = 0.0f;
+
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
@@ -41,6 +46,7 @@ public class PlayerController : MonoBehaviour
         }
         rend = GetComponent<SpriteRenderer>();
         anim = gameObject.GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -55,6 +61,13 @@ public class PlayerController : MonoBehaviour
         inputVertical = Input.GetAxisRaw("Vertical");
         if (inputHorizontal != 0 || inputVertical != 0)
         {
+            stepTimer += Time.deltaTime;
+            if (stepTimer >= stepInterval)
+            {
+                audioSource.Play();
+                stepTimer = 0.0f;
+            }
+
             if (inputHorizontal != 0 && inputVertical != 0)
             {
                 inputHorizontal *= speedLimiter;
@@ -86,6 +99,7 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity = new Vector2(0,0);
             ChangeAnimationState(PLAYER_IDLE);
+            stepTimer = 0.0f;
         }
         camera.transform.position = new Vector3(transform.position.x, transform.position.y, -10f);
     }
