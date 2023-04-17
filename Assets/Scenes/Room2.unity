@@ -5349,7 +5349,7 @@ PrefabInstance:
     - target: {fileID: 5997600300192784894, guid: cddf3dac5577e644fb4f8eb5215ed7af, type: 3}
       propertyPath: loreEntry
       value: 
-      objectReference: {fileID: 988388912}
+      objectReference: {fileID: 678064444}
     - target: {fileID: 5997600300192784894, guid: cddf3dac5577e644fb4f8eb5215ed7af, type: 3}
       propertyPath: exitTrigger
       value: 
