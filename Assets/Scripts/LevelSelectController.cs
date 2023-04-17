@@ -38,4 +38,32 @@ public class LevelSelectController : MonoBehaviour
         EntryController.currentEntry = EntryController.CurrentEntry.entry4;
         SceneManager.LoadScene("JournalEntries");
     }
+
+    public void Level5()
+    {
+        EntryController.nextLevel = "Room5";
+        EntryController.currentEntry = EntryController.CurrentEntry.entry5;
+        SceneManager.LoadScene("JournalEntries");
+    }
+
+    public void Level6()
+    {
+        EntryController.nextLevel = "Room6";
+        EntryController.currentEntry = EntryController.CurrentEntry.entry6;
+        SceneManager.LoadScene("JournalEntries");
+    }
+
+    public void Level7()
+    {
+        EntryController.nextLevel = "Room7";
+        EntryController.currentEntry = EntryController.CurrentEntry.entry7;
+        SceneManager.LoadScene("JournalEntries");
+    }
+
+    public void Level8()
+    {
+        EntryController.nextLevel = "Room8";
+        EntryController.currentEntry = EntryController.CurrentEntry.entry8;
+        SceneManager.LoadScene("JournalEntries");
+    }
 }
