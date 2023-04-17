@@ -12,6 +12,7 @@ TagManager:
   - MidM
   - TopM
   - Exit
+  - Mummy
   layers:
   - Default
   - TransparentFX
