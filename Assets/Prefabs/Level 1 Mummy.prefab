@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 5075781961587274968}
   m_Layer: 0
   m_Name: Level 1 Mummy
-  m_TagString: Untagged
+  m_TagString: Mummy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -182,3 +182,7 @@ MonoBehaviour:
   patrolPoints:
   - {x: -2, y: -1.4}
   - {x: 2, y: -1.4}
+  Mummy: {fileID: 0}
+  MummyExists: 0
+  MummyLevel: 0
+  MummyStatic: 0
