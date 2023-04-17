@@ -12,15 +12,15 @@ TagManager:
   - MidM
   - TopM
   - Exit
-  - Walls
+  - Mummy
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Walls
+  - 
   - Water
   - UI
-  - Player
+  - 
   - 
   - 
   - 
