@@ -109,6 +109,10 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag("Lore")) {
             loreController.SetLoreActive();
         }
+        if (other.CompareTag("Mummy"))
+        {
+            //Death
+        }
         if (other.CompareTag("Exit"))
         {
             if (SceneManager.GetActiveScene().name == "Room1")
