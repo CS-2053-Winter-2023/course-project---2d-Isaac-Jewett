@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     public GameObject waypoint;
     private LoreController loreController;
     private MummyController mummyController;
+    private Level1Mummy level1MummyController;
 
     //Movement
     public float speed = 2.0f;
@@ -347,6 +348,56 @@ public class PlayerController : MonoBehaviour
             }
 
             
+        }
+
+        //Death handling
+        if (other.CompareTag("Level1Mummy"))
+        {
+            //Stop player movement
+            speed = 0;
+            isDying = true;
+
+            //Stop mummy movement
+            level1MummyController = other.GetComponent<Level1Mummy>();
+            Rigidbody2D mummyRb = other.GetComponent<Rigidbody2D>();
+            level1MummyController.MummySpeed = 0;
+            mummyRb.freezeRotation = true;
+
+
+            //Mummy Hit animation
+            Animator animMummy = other.GetComponent<Animator>();
+            SpriteRenderer rendMummy = other.GetComponent<SpriteRenderer>();
+            if (transform.position.x - other.transform.position.x > 0)
+            {
+                animMummy.Play(MUMMY_HIT);
+                rendMummy.flipX = false;
+            }
+            else
+            {
+                animMummy.Play(MUMMY_HIT);
+                rendMummy.flipX = true;
+            }
+            StartCoroutine(WaitAndExecute());
+            IEnumerator WaitAndExecute()
+            {
+                yield return new WaitForSeconds(0.3f);
+                if (transform.position.x - other.transform.position.x > 0)
+                {
+                    anim.Play(DEATH);
+                    rend.flipX = false;
+                    audioSource.PlayOneShot(deathSFX, 0.6F);
+                }
+                else
+                {
+                    anim.Play(DEATH);
+                    rend.flipX = true;
+                    audioSource.PlayOneShot(deathSFX, 0.6F);
+                }
+                yield return new WaitForSeconds(3f);
+                SceneManager.LoadScene("GameOver");
+            }
+
+
         }
 
         //Level Transitions
