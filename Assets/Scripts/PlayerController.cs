@@ -40,13 +40,20 @@ public class PlayerController : MonoBehaviour
     private float stepTimer = 0.0f;
 
     // Hide Mechanics
-    private bool isHidden;
+    public bool isHidden;
     private Vector2 tempLocation;
     private bool canHide;
     private Vector3 sarLocation;
+    private SpriteRenderer sarRend;
+    private string sarOrientation;
+    public Sprite sarHClosed;
+    public Sprite sarVClosed;
+    public Sprite sarHOpen;
+    public Sprite sarVOpen;
 
     //lights
     public LightController lightController;
+    public GameObject sarLight;
 
 
     Level1Mummy[] myScriptReferences;
@@ -78,6 +85,15 @@ public class PlayerController : MonoBehaviour
             tempLocation = gameObject.transform.position;
             camera.transform.position = new Vector3(sarLocation.x, sarLocation.y, -10f);
             gameObject.transform.position = new Vector3(1000000000f, 10000000f, 1f);
+            sarLight.transform.position = new Vector3(sarLocation.x, sarLocation.y, 1f);
+            if (sarOrientation == "H")
+            {
+                sarRend.sprite = sarHClosed;
+            }
+            else
+            {
+                sarRend.sprite = sarVClosed;
+            }
         }
         else if (Input.GetKeyDown("space") && isHidden)
         {
@@ -85,6 +101,15 @@ public class PlayerController : MonoBehaviour
             lightController.isHidden = false;
             speed = 2.0f;
             gameObject.transform.position = tempLocation;
+            sarLight.transform.position = new Vector3(1000000000f, 10000000f, 1f);
+            if (sarOrientation == "H")
+            {
+                sarRend.sprite = sarHOpen;
+            }
+            else
+            {
+                sarRend.sprite = sarVOpen;
+            }
         }
     }
 
@@ -222,10 +247,19 @@ public class PlayerController : MonoBehaviour
                 SceneManager.LoadScene("End");
             }
         }
-        if (other.CompareTag("Sarcophagus"))
+        if (other.CompareTag("SarcophagusH"))
         {
+            sarRend = other.GetComponent<SpriteRenderer>();
             canHide = true;
             sarLocation = new Vector3 (other.transform.position.x, other.transform.position.y, -10f) ;
+            sarOrientation = "H";
+        }
+        if (other.CompareTag("SarcophagusV"))
+        {
+            sarRend = other.GetComponent<SpriteRenderer>();
+            canHide = true;
+            sarLocation = new Vector3(other.transform.position.x, other.transform.position.y, -10f);
+            sarOrientation = "V";
         }
 
     }

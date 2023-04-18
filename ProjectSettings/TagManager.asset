@@ -13,7 +13,9 @@ TagManager:
   - TopM
   - Exit
   - Mummy
-  - Walls
+  - Sarcophagus
+  - SarcophagusH
+  - SarcophagusV
   layers:
   - Default
   - TransparentFX

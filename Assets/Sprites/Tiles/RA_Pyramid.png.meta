@@ -3950,7 +3950,7 @@ TextureImporter:
       name: RA_Pyramid_183
       rect:
         serializedVersion: 2
-        x: 368
+        x: 400
         y: 994
         width: 16
         height: 26
@@ -3961,8 +3961,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0ad9be0f662a37d41b35bad4b4a5e3ac
-      internalID: -1438725128
+      spriteID: 0994a730431e5e24bb71863aad814f13
+      internalID: 250246841
       vertices: []
       indices: 
       edges: []
@@ -4115,7 +4115,7 @@ TextureImporter:
       RA_Pyramid_128: 1879571517
       RA_Pyramid_7: -703032464
       RA_Pyramid_95: -471672207
-      RA_Pyramid_183: -1438725128
+      RA_Pyramid_183: 250246841
       RA_Pyramid_42: 2086868057
       RA_Pyramid_155: -1168325658
       RA_Pyramid_93: -871027587
