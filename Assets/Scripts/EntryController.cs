@@ -14,6 +14,7 @@ public class EntryController : MonoBehaviour
     public GameObject entry6;
     public GameObject entry7;
     public GameObject entry8;
+    public GameObject entry9;
 
 
     public enum CurrentEntry { 
@@ -25,7 +26,8 @@ public class EntryController : MonoBehaviour
         entry5,
         entry6,
         entry7,
-        entry8
+        entry8,
+        entry9
     
     }
 
@@ -45,6 +47,7 @@ public class EntryController : MonoBehaviour
         entry6.SetActive(false);
         entry7.SetActive(false);
         entry8.SetActive(false);
+        entry9.SetActive(false);
         cover.SetActive(false);
         isDone = false;
 
@@ -57,10 +60,14 @@ public class EntryController : MonoBehaviour
             StartCoroutine(JournalRoutine());
         }
 
-        if (Input.GetKeyDown(KeyCode.Space)) {
+        if (Input.GetKeyDown(KeyCode.Space) && currentEntry != CurrentEntry.entry9) {
 
             SceneManager.LoadScene(nextLevel);
-        
+
+        } else if (Input.GetKeyDown(KeyCode.Space) && currentEntry == CurrentEntry.entry9) {
+
+            SceneManager.LoadScene("MainMenu");
+
         }
 
 
@@ -141,9 +148,18 @@ public class EntryController : MonoBehaviour
             isDone = true;
 
         }
+        else if (currentEntry == CurrentEntry.entry9)
+        {
+            cover.SetActive(true);
+            yield return new WaitForSeconds(1);
+            entry9.SetActive(true);
+            cover.SetActive(false);
+            isDone = true;
+
+        }
 
 
-        
+
     }
 
 

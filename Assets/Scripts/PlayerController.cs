@@ -254,7 +254,8 @@ public class PlayerController : MonoBehaviour
             }
             if (SceneManager.GetActiveScene().name == "Room8")
             {
-                SceneManager.LoadScene("End");
+                EntryController.currentEntry = EntryController.CurrentEntry.entry9;
+                SceneManager.LoadScene("JournalEntries");
             }
         }
         if (other.CompareTag("Door") && gotKey)
