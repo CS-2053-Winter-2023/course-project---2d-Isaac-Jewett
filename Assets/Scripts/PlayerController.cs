@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.Rendering.Universal;
 
 
 public class PlayerController : MonoBehaviour
@@ -14,7 +15,8 @@ public class PlayerController : MonoBehaviour
     public GameObject loreEntry;
     public GameObject exitTrigger;
     private LoreController loreController;
-    
+    private MummyController mummyController;
+
     //Movement
     public float speed = 2.0f;
     public float speedLimiter = 0.7f;
@@ -56,14 +58,21 @@ public class PlayerController : MonoBehaviour
     //lights
     public LightController lightController;
     public GameObject sarLight;
+    public Light2D flashLight;
 
     //Key stuff
     private bool gotKey;
 
+    //Upgrade stuff
+    private bool gotUpgrade;
+    private bool canBeam;
+
     Level1Mummy[] myScriptReferences;
+    public GameObject[] mummies;
 
     void Start()
     {
+        flashLight = flashLight.GetComponent<Light2D>();
         rb = gameObject.GetComponent<Rigidbody2D>();
         loreController = loreEntry.GetComponent<LoreController>();
         if(SceneManager.GetActiveScene().name == "Room1"){
@@ -72,27 +81,36 @@ public class PlayerController : MonoBehaviour
         rend = GetComponent<SpriteRenderer>();
         anim = gameObject.GetComponent<Animator>();
         myScriptReferences = FindObjectsOfType<Level1Mummy>();
-
         audioSource = GetComponent<AudioSource>();
         isHidden = false;
         canHide = false;
         gotKey = false;
+        gotUpgrade = false;
+        if (SceneManager.GetActiveScene().name == "Room7" || SceneManager.GetActiveScene().name == "Room8")
+        {
+            gotUpgrade = true;
+        }
+        canBeam = true;
+        mummies = GameObject.FindGameObjectsWithTag("Mummy");
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        //Speed hack for devs
         if (Input.GetKeyDown("0"))
         {
             speed = 10f;
         }
-            if (Input.GetKeyDown("space") && canHide && !isHidden)
+
+        //Sarcophagus hiding 
+        if (Input.GetKeyDown("space") && canHide && !isHidden)
         {
             isHidden = true;
             lightController.isHidden = true;
             speed = 0f;
             tempLocation = gameObject.transform.position;
-            camera.transform.position = new Vector3(sarLocation.x, sarLocation.y, -10f);
             gameObject.transform.position = new Vector3(1000000000f, 10000000f, 1f);
             sarLight.transform.position = new Vector3(sarLocation.x, sarLocation.y, 1f);
             if (sarOrientation == "H")
@@ -121,10 +139,40 @@ public class PlayerController : MonoBehaviour
                 sarRend.sprite = sarVOpen;
             }
         }
+        if (Input.GetMouseButtonDown(0) && gotUpgrade && canBeam)
+        {
+            StartCoroutine(FlashRed());
+            IEnumerator FlashRed()
+            {
+                //Change flashLight colour to red
+                flashLight.color = Color.red;
+                flashLight.intensity = 3f;
+                canBeam = false;
+                foreach (GameObject mummy in mummies)
+                {
+                    mummyController =  mummy.GetComponent<MummyController>();
+                    mummyController.StunMummy(transform.position);
+                }
+
+                    // Wait for the specified duration
+                    yield return new WaitForSeconds(0.5f);
+
+                // Set the colour back to white
+                flashLight.color = Color.white;
+                flashLight.intensity = 1;
+
+                // Wait for the specified duration
+                yield return new WaitForSeconds(10f);
+                canBeam = true;
+
+            }
+        }
     }
 
     void FixedUpdate()
     {
+
+        //Player movement
         inputHorizontal = Input.GetAxisRaw("Horizontal");
         inputVertical = Input.GetAxisRaw("Vertical");
         if (inputHorizontal != 0 || inputVertical != 0)
@@ -169,6 +217,8 @@ public class PlayerController : MonoBehaviour
             ChangeAnimationState(PLAYER_IDLE);
             stepTimer = 0.0f;
         }
+
+        //Camera control
         if (!isHidden)
         {
             camera.transform.position = new Vector3(transform.position.x, transform.position.y, -10f);
@@ -177,6 +227,8 @@ public class PlayerController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
+
+        //Mummy stuff
         if (other.CompareTag("TopT"))   {
             foreach (Level1Mummy myScript in myScriptReferences)
             {
@@ -201,13 +253,19 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
+
+        //Lore pickups
         if (other.CompareTag("Lore")) {
             loreController.SetLoreActive();
         }
+
+        //Death handling
         if (other.CompareTag("Mummy"))
         {
             //Death
         }
+
+        //Level Transitions
         if (other.CompareTag("Exit"))
         {
             if (SceneManager.GetActiveScene().name == "Room1")
@@ -258,6 +316,8 @@ public class PlayerController : MonoBehaviour
                 SceneManager.LoadScene("JournalEntries");
             }
         }
+
+        //Opens door with animation when touched with key
         if (other.CompareTag("Door") && gotKey)
         {
             animDoor = other.GetComponent<Animator>();
@@ -271,11 +331,15 @@ public class PlayerController : MonoBehaviour
                 speed = 2.0f;
             }
         }
+
+        //picking up the key
         if (other.CompareTag("Key"))
         {
             gotKey = true;
             Destroy(other.gameObject);
         }
+
+        //Handles sarcophogus hiding details
         if (other.CompareTag("SarcophagusH"))
         {
             sarRend = other.GetComponent<SpriteRenderer>();
@@ -284,6 +348,8 @@ public class PlayerController : MonoBehaviour
             sarLocation = new Vector3 (other.transform.position.x, other.transform.position.y, -10f) ;
             sarOrientation = "H";
         }
+
+        //Handles sarcophogus hiding details
         if (other.CompareTag("SarcophagusV"))
         {
             sarRend = other.GetComponent<SpriteRenderer>();
@@ -293,10 +359,18 @@ public class PlayerController : MonoBehaviour
             sarOrientation = "V";
         }
 
+        //Picking up the Flashlight upgrade
+        if (other.CompareTag("Upgrade"))
+        {
+            gotUpgrade = true;
+            Destroy(other.gameObject);
+        }
+
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
+        //Handles sarcophogus hiding details
         if (other.CompareTag("SarcophagusH"))
         {
             canHide = false;
@@ -307,7 +381,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    //Animation state changer
+    //Animation state changer 
     void ChangeAnimationState(string newState)
     {
 

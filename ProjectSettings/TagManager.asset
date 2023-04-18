@@ -18,6 +18,7 @@ TagManager:
   - SarcophagusV
   - Door
   - Key
+  - Upgrade
   layers:
   - Default
   - TransparentFX

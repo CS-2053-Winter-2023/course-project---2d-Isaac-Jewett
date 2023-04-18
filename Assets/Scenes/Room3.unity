@@ -173,7 +173,6 @@ MonoBehaviour:
   globalLight: {fileID: 1900070021}
   exitTrigger: {fileID: 1994112908}
   isHidden: 0
-  sarLocation: {x: 0, y: 0, z: 0}
 --- !u!1 &314884765
 GameObject:
   m_ObjectHideFlags: 0
@@ -7879,6 +7878,10 @@ PrefabInstance:
       propertyPath: loreEntry
       value: 
       objectReference: {fileID: 2094203730}
+    - target: {fileID: 5997600300192784894, guid: cddf3dac5577e644fb4f8eb5215ed7af, type: 3}
+      propertyPath: flashLight
+      value: 
+      objectReference: {fileID: 314884766}
     - target: {fileID: 5997600300192784894, guid: cddf3dac5577e644fb4f8eb5215ed7af, type: 3}
       propertyPath: exitTrigger
       value: 

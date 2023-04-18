@@ -13,7 +13,6 @@ public class LightController : MonoBehaviour
     public GameObject globalLight;
     public GameObject exitTrigger;
     public bool isHidden;
-    public Vector3 sarLocation;
 
     private void Start()
     {
