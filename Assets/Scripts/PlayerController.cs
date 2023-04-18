@@ -297,8 +297,10 @@ public class PlayerController : MonoBehaviour
 
             //Stop mummy movement
             mummyController = other.GetComponent<MummyController>();
+            Rigidbody2D mummyRb = other.GetComponent<Rigidbody2D>();
             mummyController.chaseSpeed = 0;
             mummyController.MummySpeed = 0;
+            mummyRb.freezeRotation = true;
             
             
             //Mummy Hit animation
@@ -307,12 +309,12 @@ public class PlayerController : MonoBehaviour
             if (transform.position.x - other.transform.position.x > 0)
             {
                 animMummy.Play(MUMMY_HIT);
-                rendMummy.flipX = true;
+                rendMummy.flipX = false;
             }
             else
             {
                 animMummy.Play(MUMMY_HIT);
-                rendMummy.flipX = false;
+                rendMummy.flipX = true;
             }
             StartCoroutine(WaitAndExecute());
             IEnumerator WaitAndExecute()
