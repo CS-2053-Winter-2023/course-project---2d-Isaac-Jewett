@@ -12,6 +12,8 @@ public class LightController : MonoBehaviour
     public GameObject flashlight;
     public GameObject globalLight;
     public GameObject exitTrigger;
+    public bool isHidden;
+    public Vector3 sarLocation;
 
     private void Start()
     {
@@ -20,22 +22,32 @@ public class LightController : MonoBehaviour
             globalLight.SetActive(false);
 
         }
-        
+        isHidden = false;
+
     }
 
     // Update is called once per frame
     void LateUpdate()
     {
-        playerLight.transform.position = player.transform.position;
-        flashlight.transform.position = player.transform.position;
+        if (!isHidden)
+        {
+            playerLight.SetActive(true);
+            flashlight.SetActive(true);
+            playerLight.transform.position = player.transform.position;
+            flashlight.transform.position = player.transform.position;
 
-        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        Vector3 direction = mousePos - player.transform.position;
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg + 270;
+            Vector3 direction = mousePos - player.transform.position;
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg + 270;
 
-        flashlight.transform.rotation = Quaternion.Euler(0, 0, angle);
-
+            flashlight.transform.rotation = Quaternion.Euler(0, 0, angle);
+        }
+        else
+        {
+            playerLight.SetActive(false);
+            flashlight.SetActive(false);
+        }
         if (exitTrigger.activeInHierarchy) {
             globalLight.SetActive(false);
         }
