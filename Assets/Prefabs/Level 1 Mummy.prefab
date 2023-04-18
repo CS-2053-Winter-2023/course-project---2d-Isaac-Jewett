@@ -96,8 +96,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0410e2bfbbdceb141bdfd84346da5bb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MummySpeed: 1.7
-  chaseSpeed: 1.5
+  MummySpeed: 1.5
+  chaseSpeed: 1.6
   rb: {fileID: 0}
   patrolPoints:
   - {x: -2, y: -1.4}

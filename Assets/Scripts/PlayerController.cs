@@ -302,7 +302,6 @@ public class PlayerController : MonoBehaviour
             foreach (Level1Mummy myScript in myScriptReferences)
             {
                 if (myScript.MummyLevel == 1)    {
-                    Debug.Log("Test");
                     myScript.MummyLevel = 0;
                     myScript.MummyExists = true;
                     myScript.rb.simulated = true;
@@ -313,7 +312,7 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag("Collider 2"))   {
             foreach (Level1Mummy myScript in myScriptReferences)
             {
-                if (myScript.MummyLevel == 1)    {
+                if (myScript.MummyLevel == 2)    {
                     myScript.MummyLevel = 0;
                     myScript.MummyExists = true;
                     myScript.rb.simulated = true;
@@ -324,7 +323,7 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag("Collider 3"))   {
             foreach (Level1Mummy myScript in myScriptReferences)
             {
-                if (myScript.MummyLevel == 1)    {
+                if (myScript.MummyLevel == 3)    {
                     myScript.MummyLevel = 0;
                     myScript.MummyExists = true;
                     myScript.rb.simulated = true;
@@ -335,7 +334,7 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag("Collider 4"))   {
             foreach (Level1Mummy myScript in myScriptReferences)
             {
-                if (myScript.MummyLevel == 1)    {
+                if (myScript.MummyLevel == 4)    {
                     myScript.MummyLevel = 0;
                     myScript.MummyExists = true;
                     myScript.rb.simulated = true;
