@@ -43,11 +43,12 @@ public class LoreController : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "Room1")
         {
             exitTrigger.SetActive(true);
+            foreach (Level1Mummy myScript in myScriptReferences)
+            {
+                myScript.MummyExists = true;
+            }
         }
-        foreach (Level1Mummy myScript in myScriptReferences)
-        {
-            myScript.MummyExists = true;
-        }
+
         isLoreActive = true;
         loreEntryImage.SetActive(true);
         Time.timeScale = 0;

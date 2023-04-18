@@ -268,6 +268,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1883201829}
     - target: {fileID: 5075781961587274968, guid: 8911bed2d427ee147ade21995fcf7a02, type: 3}
+      propertyPath: MummyLevel
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5075781961587274968, guid: 8911bed2d427ee147ade21995fcf7a02, type: 3}
       propertyPath: patrolPoints.Array.data[0].x
       value: 1
       objectReference: {fileID: 0}
@@ -473,7 +477,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 6cae282c4a0c868419335f1effc44c27, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1013,7 +1017,6 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420033}
-  - component: {fileID: 519420034}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1862,6 +1865,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1965226464}
     - target: {fileID: 5075781961587274968, guid: 8911bed2d427ee147ade21995fcf7a02, type: 3}
+      propertyPath: MummyLevel
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5075781961587274968, guid: 8911bed2d427ee147ade21995fcf7a02, type: 3}
       propertyPath: patrolPoints.Array.data[0].x
       value: 1
       objectReference: {fileID: 0}
@@ -2193,7 +2200,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 147130449
-  m_SortingLayer: -1
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -15464,6 +15471,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2136159289}
     - target: {fileID: 5075781961587274968, guid: 8911bed2d427ee147ade21995fcf7a02, type: 3}
+      propertyPath: MummyLevel
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5075781961587274968, guid: 8911bed2d427ee147ade21995fcf7a02, type: 3}
       propertyPath: MummyExists
       value: 0
       objectReference: {fileID: 0}
@@ -15658,6 +15669,10 @@ PrefabInstance:
       propertyPath: Mummy
       value: 
       objectReference: {fileID: 355727642}
+    - target: {fileID: 5075781961587274968, guid: 8911bed2d427ee147ade21995fcf7a02, type: 3}
+      propertyPath: MummyLevel
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5075781961587274968, guid: 8911bed2d427ee147ade21995fcf7a02, type: 3}
       propertyPath: patrolPoints.Array.data[0].x
       value: 1
@@ -16013,7 +16028,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 5
-      m_TileSpriteIndex: 8
+      m_TileSpriteIndex: 3
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -16023,7 +16038,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 5
-      m_TileSpriteIndex: 8
+      m_TileSpriteIndex: 3
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -16033,7 +16048,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 5
-      m_TileSpriteIndex: 8
+      m_TileSpriteIndex: 3
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -16043,7 +16058,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 5
-      m_TileSpriteIndex: 8
+      m_TileSpriteIndex: 3
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -16053,7 +16068,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 4
-      m_TileSpriteIndex: 4
+      m_TileSpriteIndex: 8
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -16433,7 +16448,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 5
-      m_TileSpriteIndex: 8
+      m_TileSpriteIndex: 3
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -16443,7 +16458,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 5
-      m_TileSpriteIndex: 8
+      m_TileSpriteIndex: 3
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -16453,7 +16468,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 5
-      m_TileSpriteIndex: 8
+      m_TileSpriteIndex: 3
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -16463,7 +16478,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 5
-      m_TileSpriteIndex: 8
+      m_TileSpriteIndex: 3
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -16494,18 +16509,18 @@ Tilemap:
     m_Data: {fileID: -1077059422, guid: b8a791f959edd0b4193979f22aa2302b, type: 3}
   - m_RefCount: 8
     m_Data: {fileID: 620232275, guid: b8a791f959edd0b4193979f22aa2302b, type: 3}
+  - m_RefCount: 8
+    m_Data: {fileID: 250246841, guid: b8a791f959edd0b4193979f22aa2302b, type: 3}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 1
-    m_Data: {fileID: 21300000, guid: bb680595e99d0fe4f999bdfe214b4adf, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: -1954094922, guid: b8a791f959edd0b4193979f22aa2302b, type: 3}
   - m_RefCount: 8
     m_Data: {fileID: -623913979, guid: b8a791f959edd0b4193979f22aa2302b, type: 3}
   - m_RefCount: 2
     m_Data: {fileID: 1686501885, guid: b8a791f959edd0b4193979f22aa2302b, type: 3}
-  - m_RefCount: 8
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 21300000, guid: bb680595e99d0fe4f999bdfe214b4adf, type: 3}
   m_TileMatrixArray:
   - m_RefCount: 54
     m_Data:
@@ -16627,6 +16642,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 348793670}
     - target: {fileID: 5075781961587274968, guid: 8911bed2d427ee147ade21995fcf7a02, type: 3}
+      propertyPath: MummyLevel
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5075781961587274968, guid: 8911bed2d427ee147ade21995fcf7a02, type: 3}
       propertyPath: patrolPoints.Array.data[0].x
       value: 1
       objectReference: {fileID: 0}
@@ -16703,6 +16722,14 @@ PrefabInstance:
       propertyPath: Mummy
       value: 
       objectReference: {fileID: 1948244533}
+    - target: {fileID: 5075781961587274968, guid: 8911bed2d427ee147ade21995fcf7a02, type: 3}
+      propertyPath: MummyLevel
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5075781961587274968, guid: 8911bed2d427ee147ade21995fcf7a02, type: 3}
+      propertyPath: MummyStatic
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5075781961587274968, guid: 8911bed2d427ee147ade21995fcf7a02, type: 3}
       propertyPath: patrolPoints.Array.data[0].y
       value: 0.5
@@ -17188,6 +17215,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 441329545}
     - target: {fileID: 5075781961587274968, guid: 8911bed2d427ee147ade21995fcf7a02, type: 3}
+      propertyPath: MummyLevel
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5075781961587274968, guid: 8911bed2d427ee147ade21995fcf7a02, type: 3}
       propertyPath: patrolPoints.Array.data[0].y
       value: 6.5
       objectReference: {fileID: 0}
@@ -17260,6 +17291,10 @@ PrefabInstance:
       propertyPath: Mummy
       value: 
       objectReference: {fileID: 512656592}
+    - target: {fileID: 5075781961587274968, guid: 8911bed2d427ee147ade21995fcf7a02, type: 3}
+      propertyPath: MummyLevel
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5075781961587274968, guid: 8911bed2d427ee147ade21995fcf7a02, type: 3}
       propertyPath: patrolPoints.Array.data[0].y
       value: 12.5
