@@ -26,6 +26,10 @@ public class Level1Mummy : MonoBehaviour
 
     void Update()
     {
+        if (currentPatrolPointIndex == patrolPoints.Length)  {
+            rb.velocity = Vector2.zero;
+            return;
+        }
         if (!MummyExists && MummyLevel == 0)    {
             MummyLevel = MummyStatic;
         }

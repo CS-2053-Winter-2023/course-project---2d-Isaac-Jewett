@@ -57,7 +57,7 @@ void Update()
 
     // Check for walls between mummy and player
 
-    if ((rb.velocity.x <= 0.1 && rb.velocity.x >= -0.1) || (rb.velocity.y <= 0.1 && rb.velocity.y >= -0.1))
+    if (((rb.velocity.x <= 0.1 && rb.velocity.x >= -0.1) || (rb.velocity.y <= 0.1 && rb.velocity.y >= -0.1)) && (angleToPlayer % 90 != 0))
     {
         isChasing = false;
         animator.SetTrigger("EndChase");

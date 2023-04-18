@@ -21,6 +21,13 @@ TagManager:
   - Upgrade
   - Waypoint
   - Level1Mummy
+<<<<<<< Updated upstream
+=======
+  - Collider 1
+  - Collider 2
+  - Collider 3
+  - Collider 4
+>>>>>>> Stashed changes
   layers:
   - Default
   - TransparentFX
