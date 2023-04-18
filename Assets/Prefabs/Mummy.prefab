@@ -105,7 +105,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MummySpeed: 2
   visionRange: 10
-  chaseSpeed: 4.5
+  chaseSpeed: 3.5
   fieldOfView: 30
   frontDirection: {fileID: 1430692629521868304}
   Stun: {fileID: 8300000, guid: 63fce42b7ac29be4f968d6bcc238b34b, type: 3}
