@@ -46,6 +46,12 @@ public class PlayerController : MonoBehaviour
     public AudioClip deathSFX;
     public AudioClip keySFX;
     public AudioClip loreSFX;
+    public AudioClip StonePush;
+    public AudioClip Sarcophagus;
+    public AudioClip Waypoint;
+    public AudioClip CanUseWay;
+    public AudioClip Flash1;
+    public AudioClip Flash2;
     public float stepInterval = 1f;
     private float stepTimer = 0.0f;
 
@@ -124,6 +130,7 @@ public class PlayerController : MonoBehaviour
         //Sarcophagus hiding 
         if (Input.GetKeyDown("space") && canHide && !isHidden)
         {
+            audioSource.PlayOneShot(Sarcophagus);
             isHidden = true;
             lightController.isHidden = true;
             speed = 0f;
@@ -141,6 +148,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (Input.GetKeyDown("space") && isHidden)
         {
+            audioSource.PlayOneShot(Sarcophagus);
             canHide = true;
             isHidden = false;
             lightController.isHidden = false;
@@ -158,6 +166,7 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetMouseButtonDown(0) && gotUpgrade && canBeam)
         {
+            audioSource.PlayOneShot(Flash2);
             StartCoroutine(FlashRed());
             IEnumerator FlashRed()
             {
@@ -186,6 +195,7 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetKeyDown("r") && gotWaypoints)
         {
+            audioSource.PlayOneShot(Waypoint);
             GameObject newWaypoint = Instantiate(waypoint, transform.position, waypoint.transform.rotation);
         }
     }
@@ -333,7 +343,7 @@ public class PlayerController : MonoBehaviour
                     audioSource.PlayOneShot(deathSFX, 0.6F);
                 }
                 yield return new WaitForSeconds(3f);
-                SceneManager.LoadScene("Credits");
+                SceneManager.LoadScene("GameOver");
             }
 
             
@@ -396,6 +406,7 @@ public class PlayerController : MonoBehaviour
         {
             animDoor = other.GetComponent<Animator>();
             animDoor.Play(DOOR_OPEN);
+            audioSource.PlayOneShot(StonePush);
             speed = 0;
             StartCoroutine(WaitAndExecute());
             IEnumerator WaitAndExecute()
@@ -437,6 +448,7 @@ public class PlayerController : MonoBehaviour
         //Picking up the Flashlight upgrade
         if (other.CompareTag("Upgrade"))
         {
+            audioSource.PlayOneShot(Flash1);
             gotUpgrade = true;
             Destroy(other.gameObject);
         }
@@ -446,10 +458,12 @@ public class PlayerController : MonoBehaviour
         {
             if (!gotWaypoints)
             {
+                audioSource.PlayOneShot(Waypoint);
                 count++;
                 if (count > 10)
                 {
                     gotWaypoints = true;
+                    audioSource.PlayOneShot(CanUseWay);
                 }
                 Destroy(other.gameObject);
             }

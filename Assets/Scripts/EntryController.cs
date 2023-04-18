@@ -15,6 +15,7 @@ public class EntryController : MonoBehaviour
     public GameObject entry7;
     public GameObject entry8;
     public GameObject entry9;
+    private AudioSource audioSource;
 
 
     public enum CurrentEntry { 
@@ -39,6 +40,7 @@ public class EntryController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         entry1.SetActive(false);
         entry2.SetActive(false);
         entry3.SetActive(false);
