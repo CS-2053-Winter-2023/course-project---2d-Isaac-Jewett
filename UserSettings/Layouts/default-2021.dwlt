@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1920
     height: 997
   m_ShowMode: 4
-  m_Title: Project
+  m_Title: Scene
   m_RootView: {fileID: 6}
   m_MinSize: {x: 875, y: 371}
   m_MaxSize: {x: 10000, y: 10000}
@@ -74,7 +74,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 3206
+  controlID: 29
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -94,8 +94,8 @@ MonoBehaviour:
     y: 0
     width: 389
     height: 565
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 201, y: 221}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 16}
   m_Panes:
   - {fileID: 16}
@@ -428,22 +428,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts
+    - Assets/Scenes
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scripts
+  - Assets/Scenes
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: C:\GameDev\Group Ass\7.0\course-project---2d-Isaac-Jewett
+  m_LastProjectPath: D:\UNB - Computer Science\Year 2\CS2053\Final\course-project---2d-Isaac-Jewett
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 34dc0000
-    m_LastClickedID: 56372
-    m_ExpandedIDs: 000000002adc000000ca9a3bffffff7f
+    m_SelectedIDs: 426e0000
+    m_LastClickedID: 28226
+    m_ExpandedIDs: 000000000c6e00000e6e0000106e0000126e0000146e0000166e0000186e00001a6e00003c6e000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -471,7 +471,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 
+    m_ExpandedIDs: 000000000c6e00000e6e0000106e0000126e0000146e0000166e0000186e00001a6e0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -555,8 +555,7 @@ MonoBehaviour:
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
     m_SaveData: []
-  m_ObjectsLockedBeforeSerialization:
-  - {fileID: 7943511758732295212, guid: 28dec2f1303f0a24aae68c87b218b00f, type: 3}
+  m_ObjectsLockedBeforeSerialization: []
   m_InstanceIDsLockedBeforeSerialization: 
   m_PreviewResizer:
     m_CachedPref: 160
@@ -567,7 +566,7 @@ MonoBehaviour:
   m_GlobalObjectId: 
   m_InspectorMode: 0
   m_LockTracker:
-    m_IsLocked: 1
+    m_IsLocked: 0
   m_PreviewWindow: {fileID: 0}
 --- !u!114 &16
 MonoBehaviour:
@@ -602,7 +601,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 2e45ffffa846ffff5648ffff945dffff1061ffff2264fffffe65ffff56a2ffff1ea4ffff4a030100
+      m_ExpandedIDs: c0e9ffff2cedffff88f5ffff24fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -873,9 +872,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -3.688822, y: 3.004421, z: 1.1119144}
+    m_Target: {x: 564.2161, y: 241.91441, z: 1.431272}
     speed: 2
-    m_Value: {x: -3.688822, y: 3.004421, z: 1.1119144}
+    m_Value: {x: 564.2161, y: 241.91441, z: 1.431272}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -926,9 +925,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 9.239506
+    m_Target: 323.40253
     speed: 2
-    m_Value: 9.239506
+    m_Value: 323.40253
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -1067,7 +1066,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 638
-    width: 1531
+    width: 1574
     height: 361
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:

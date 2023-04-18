@@ -1,53 +1,43 @@
-@ -3,31 +3,7 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Lore
-  - TopT
-  - MidT
-  - LowT
-  - LowM
-  - MidM
-  - TopM
-  - Exit
-  - Mummy
-  - Sarcophagus
-  - SarcophagusH
-  - SarcophagusV
-  - Door
-  - Key
-  - Upgrade
-  - Waypoint
-  - Level1Mummy
-  - Collider 1
-  - Collider 2
-  - Collider 3
-  - Collider 4
   tags: []
   layers:
   - Default
   - TransparentFX
-@ -35,9 +11,9 @@ TagManager:
+  - Ignore Raycast
   - 
   - Water
   - UI
-  - Wall
-  - Player
-  - Mummy
   - 
   - 
   - 
   - 
   - 
   - 
-@ -62,9 +38,6 @@ TagManager:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
   - 
   - 
   m_SortingLayers:
-  - name: Background
-    uniqueID: 147130449
-    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
