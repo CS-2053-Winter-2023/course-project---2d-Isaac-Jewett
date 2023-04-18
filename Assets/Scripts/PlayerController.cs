@@ -26,12 +26,14 @@ public class PlayerController : MonoBehaviour
     // Animations and states
     private SpriteRenderer rend;
     private Animator anim;
+    private Animator animDoor;
     string currentState;
     const string PLAYER_IDLE = "Player_Idle";
     const string PLAYER_RIGHT = "Player_Right";
     const string PLAYER_LEFT = "Player_Left";
     const string PLAYER_UP = "Player_Up";
     const string PLAYER_DOWN = "Player_Down";
+    const string DOOR_OPEN = "DoorOpening";
     
 
     // Audio
@@ -55,6 +57,8 @@ public class PlayerController : MonoBehaviour
     public LightController lightController;
     public GameObject sarLight;
 
+    //Key stuff
+    private bool gotKey;
 
     Level1Mummy[] myScriptReferences;
 
@@ -72,12 +76,17 @@ public class PlayerController : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         isHidden = false;
         canHide = false;
+        gotKey = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("space") && canHide && !isHidden)
+        if (Input.GetKeyDown("0"))
+        {
+            speed = 10f;
+        }
+            if (Input.GetKeyDown("space") && canHide && !isHidden)
         {
             isHidden = true;
             lightController.isHidden = true;
@@ -97,6 +106,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (Input.GetKeyDown("space") && isHidden)
         {
+            canHide = true;
             isHidden = false;
             lightController.isHidden = false;
             speed = 2.0f;
@@ -247,10 +257,29 @@ public class PlayerController : MonoBehaviour
                 SceneManager.LoadScene("End");
             }
         }
+        if (other.CompareTag("Door") && gotKey)
+        {
+            animDoor = other.GetComponent<Animator>();
+            animDoor.Play(DOOR_OPEN);
+            speed = 0;
+            StartCoroutine(WaitAndExecute());
+            IEnumerator WaitAndExecute()
+            {
+                yield return new WaitForSeconds(0.3f); // Wait for 2 seconds
+                Destroy(other.gameObject); // Code to execute after waiting
+                speed = 2.0f;
+            }
+        }
+        if (other.CompareTag("Key"))
+        {
+            gotKey = true;
+            Destroy(other.gameObject);
+        }
         if (other.CompareTag("SarcophagusH"))
         {
             sarRend = other.GetComponent<SpriteRenderer>();
             canHide = true;
+            isHidden = false;
             sarLocation = new Vector3 (other.transform.position.x, other.transform.position.y, -10f) ;
             sarOrientation = "H";
         }
@@ -258,6 +287,7 @@ public class PlayerController : MonoBehaviour
         {
             sarRend = other.GetComponent<SpriteRenderer>();
             canHide = true;
+            isHidden = false;
             sarLocation = new Vector3(other.transform.position.x, other.transform.position.y, -10f);
             sarOrientation = "V";
         }
@@ -266,7 +296,11 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Sarcophagus"))
+        if (other.CompareTag("SarcophagusH"))
+        {
+            canHide = false;
+        }
+        if (other.CompareTag("SarcophagusV"))
         {
             canHide = false;
         }

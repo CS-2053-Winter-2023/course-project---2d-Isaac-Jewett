@@ -109,10 +109,11 @@ MonoBehaviour:
   stepInterval: 1
   isHidden: 0
   sarHClosed: {fileID: -227630568, guid: b8a791f959edd0b4193979f22aa2302b, type: 3}
-  sarVClosed: {fileID: 0}
+  sarVClosed: {fileID: 21300000, guid: 2d999b682ac33f74b9d64c4fbb623f67, type: 2}
   sarHOpen: {fileID: 1759712133, guid: b8a791f959edd0b4193979f22aa2302b, type: 3}
   sarVOpen: {fileID: -1744149580, guid: b8a791f959edd0b4193979f22aa2302b, type: 3}
   lightController: {fileID: 0}
+  sarLight: {fileID: 0}
 --- !u!61 &6631678678472774669
 BoxCollider2D:
   m_ObjectHideFlags: 0

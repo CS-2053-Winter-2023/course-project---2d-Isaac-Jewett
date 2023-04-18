@@ -16,6 +16,8 @@ TagManager:
   - Sarcophagus
   - SarcophagusH
   - SarcophagusV
+  - Door
+  - Key
   layers:
   - Default
   - TransparentFX
