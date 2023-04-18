@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
     new public Camera camera;
 
     // Animations and states
+    private bool isDying;
     private SpriteRenderer rend;
     private Animator anim;
     private Animator animDoor;
@@ -36,6 +37,8 @@ public class PlayerController : MonoBehaviour
     const string PLAYER_UP = "Player_Up";
     const string PLAYER_DOWN = "Player_Down";
     const string DOOR_OPEN = "DoorOpening";
+    const string MUMMY_HIT = "MummyAttack";
+    const string DEATH = "Player_Death";
     
 
     // Audio
@@ -72,6 +75,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        isDying = false;
         flashLight = flashLight.GetComponent<Light2D>();
         rb = gameObject.GetComponent<Rigidbody2D>();
         loreController = loreEntry.GetComponent<LoreController>();
@@ -175,47 +179,54 @@ public class PlayerController : MonoBehaviour
         //Player movement
         inputHorizontal = Input.GetAxisRaw("Horizontal");
         inputVertical = Input.GetAxisRaw("Vertical");
-        if (inputHorizontal != 0 || inputVertical != 0)
+        if (!isDying)
         {
-            stepTimer += Time.deltaTime;
-            if (stepTimer >= stepInterval)
+            if (inputHorizontal != 0 || inputVertical != 0)
             {
-                audioSource.Play();
+                stepTimer += Time.deltaTime;
+                if (stepTimer >= stepInterval)
+                {
+                    audioSource.Play();
+                    stepTimer = 0.0f;
+                }
+
+                if (inputHorizontal != 0 && inputVertical != 0)
+                {
+                    inputHorizontal *= speedLimiter;
+                    inputVertical *= speedLimiter;
+                }
+
+                rb.velocity = new Vector2(inputHorizontal * speed, inputVertical * speed);
+
+                if (inputHorizontal > 0)
+                {
+                    ChangeAnimationState(PLAYER_RIGHT);
+                    rend.flipX = false;
+                }
+                else if (inputHorizontal < 0)
+                {
+                    ChangeAnimationState(PLAYER_RIGHT);
+                    rend.flipX = true;
+                }
+                else if (inputVertical > 0)
+                {
+                    ChangeAnimationState(PLAYER_UP);
+                }
+                else if (inputVertical < 0)
+                {
+                    ChangeAnimationState(PLAYER_DOWN);
+                }
+            }
+            else
+            {
+                rb.velocity = new Vector2(0, 0);
+                ChangeAnimationState(PLAYER_IDLE);
                 stepTimer = 0.0f;
-            }
-
-            if (inputHorizontal != 0 && inputVertical != 0)
-            {
-                inputHorizontal *= speedLimiter;
-                inputVertical *= speedLimiter;
-            }
-
-            rb.velocity = new Vector2(inputHorizontal * speed, inputVertical * speed);
-
-            if (inputHorizontal > 0)
-            {
-                ChangeAnimationState(PLAYER_RIGHT);
-                rend.flipX = false;
-            }
-            else if (inputHorizontal < 0)
-            {
-                ChangeAnimationState(PLAYER_RIGHT);
-                rend.flipX = true;
-            }
-            else if (inputVertical > 0)
-            {
-                ChangeAnimationState(PLAYER_UP);
-            }
-            else if (inputVertical < 0)
-            {
-                ChangeAnimationState(PLAYER_DOWN);
             }
         }
         else
         {
-            rb.velocity = new Vector2(0,0);
-            ChangeAnimationState(PLAYER_IDLE);
-            stepTimer = 0.0f;
+            rb.velocity = new Vector2(0, 0);
         }
 
         //Camera control
@@ -262,7 +273,41 @@ public class PlayerController : MonoBehaviour
         //Death handling
         if (other.CompareTag("Mummy"))
         {
-            //Death
+            speed = 0;
+            isDying = true;
+            
+            //Mummy Hit animation
+            Animator animMummy = other.GetComponent<Animator>();
+            SpriteRenderer rendMummy = other.GetComponent<SpriteRenderer>();
+            if (transform.position.x - other.transform.position.x > 0)
+            {
+                animMummy.Play(MUMMY_HIT);
+                rendMummy.flipX = true;
+            }
+            else
+            {
+                animMummy.Play(MUMMY_HIT);
+                rendMummy.flipX = false;
+            }
+            StartCoroutine(WaitAndExecute());
+            IEnumerator WaitAndExecute()
+            {
+                yield return new WaitForSeconds(0.3f); 
+                if (transform.position.x - other.transform.position.x > 0)
+                {
+                    anim.Play(DEATH);
+                    rend.flipX = false;
+                }
+                else
+                {
+                    anim.Play(DEATH);
+                    rend.flipX = true;
+                }
+                yield return new WaitForSeconds(3f);
+                SceneManager.LoadScene("Credits");
+            }
+
+            
         }
 
         //Level Transitions
@@ -389,7 +434,11 @@ public class PlayerController : MonoBehaviour
         if (currentState == newState) return;
 
         //Play new animation
-        anim.Play(newState);
+        if (!isDying)
+        {
+            anim.Play(newState);
+        }
+       
 
         // Update current state
         currentState = newState;
