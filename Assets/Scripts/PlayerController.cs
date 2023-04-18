@@ -44,6 +44,9 @@ public class PlayerController : MonoBehaviour
 
     // Audio
     private AudioSource audioSource;
+    public AudioClip deathSFX;
+    public AudioClip keySFX;
+    public AudioClip loreSFX;
     public float stepInterval = 1f;
     private float stepTimer = 0.0f;
 
@@ -282,12 +285,14 @@ public class PlayerController : MonoBehaviour
 
         //Lore pickups
         if (other.CompareTag("Lore")) {
+            audioSource.PlayOneShot(loreSFX);
             loreController.SetLoreActive();
         }
 
         //Death handling
         if (other.CompareTag("Mummy"))
         {
+            audioSource.PlayOneShot(deathSFX, 0.6F);
             speed = 0;
             isDying = true;
             
@@ -395,6 +400,7 @@ public class PlayerController : MonoBehaviour
         //picking up the key
         if (other.CompareTag("Key"))
         {
+            audioSource.PlayOneShot(keySFX);
             gotKey = true;
             Destroy(other.gameObject);
         }

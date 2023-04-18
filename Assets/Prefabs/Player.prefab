@@ -107,6 +107,9 @@ MonoBehaviour:
   speed: 2
   speedLimiter: 0.7
   camera: {fileID: 0}
+  deathSFX: {fileID: 8300000, guid: 0600c91b49664b54a8f68263159848b6, type: 3}
+  keySFX: {fileID: 8300000, guid: 5b352fd339f6d6041a806105f5f73196, type: 3}
+  loreSFX: {fileID: 8300000, guid: b5e456c3278f4d64a976481ce5d5eb26, type: 3}
   stepInterval: 1
   isHidden: 0
   sarHClosed: {fileID: -227630568, guid: b8a791f959edd0b4193979f22aa2302b, type: 3}
