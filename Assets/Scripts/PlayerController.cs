@@ -55,6 +55,9 @@ public class PlayerController : MonoBehaviour
     public LightController lightController;
     public GameObject sarLight;
 
+
+    Level1Mummy[] myScriptReferences;
+
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
@@ -64,6 +67,8 @@ public class PlayerController : MonoBehaviour
         }
         rend = GetComponent<SpriteRenderer>();
         anim = gameObject.GetComponent<Animator>();
+        myScriptReferences = FindObjectsOfType<Level1Mummy>();
+
         audioSource = GetComponent<AudioSource>();
         isHidden = false;
         canHide = false;
@@ -162,6 +167,30 @@ public class PlayerController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        if (other.CompareTag("TopT"))   {
+            foreach (Level1Mummy myScript in myScriptReferences)
+            {
+                if (myScript.MummyLevel == 3)    {
+                    myScript.MummyLevel = 0;
+                }
+            }            
+        }
+        if (other.CompareTag("MidT"))   {
+            foreach (Level1Mummy myScript in myScriptReferences)
+            {
+                if (myScript.MummyLevel == 2)    {
+                    myScript.MummyLevel = 0;
+                }
+            }
+        }
+        if (other.CompareTag("LowT"))   {
+            foreach (Level1Mummy myScript in myScriptReferences)
+            {
+                if (myScript.MummyLevel == 1)    {
+                    myScript.MummyLevel = 0;
+                }
+            }
+        }
         if (other.CompareTag("Lore")) {
             loreController.SetLoreActive();
         }
