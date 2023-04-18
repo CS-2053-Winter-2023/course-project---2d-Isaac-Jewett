@@ -17,6 +17,7 @@ public class MummyController : MonoBehaviour
     private Rigidbody2D rb;
     private Animator animator;
     private bool isChasing;
+    public AudioClip Stun;
 
     public Vector2[] patrolPoints;
     private int currentPatrolPointIndex = 0;
@@ -98,6 +99,7 @@ void Update()
         {
             if (IsInCone(playerPosition, transform.position))
             {
+                audioSource.PlayOneShot(Stun);
                 StartCoroutine(SlowDownForSeconds(5f));
             }
         }
