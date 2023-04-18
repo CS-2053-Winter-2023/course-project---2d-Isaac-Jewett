@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 
+
 public class PlayerController : MonoBehaviour
 {
 
@@ -31,11 +32,21 @@ public class PlayerController : MonoBehaviour
     const string PLAYER_LEFT = "Player_Left";
     const string PLAYER_UP = "Player_Up";
     const string PLAYER_DOWN = "Player_Down";
+    
 
     // Audio
     private AudioSource audioSource;
     public float stepInterval = 1f;
     private float stepTimer = 0.0f;
+
+    // Hide Mechanics
+    private bool isHidden;
+    private Vector2 tempLocation;
+    private bool canHide;
+    private Vector3 sarLocation;
+
+    //lights
+    public LightController lightController;
 
     void Start()
     {
@@ -47,12 +58,29 @@ public class PlayerController : MonoBehaviour
         rend = GetComponent<SpriteRenderer>();
         anim = gameObject.GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
+        isHidden = false;
+        canHide = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown("space") && canHide && !isHidden)
+        {
+            isHidden = true;
+            lightController.isHidden = true;
+            speed = 0f;
+            tempLocation = gameObject.transform.position;
+            camera.transform.position = new Vector3(sarLocation.x, sarLocation.y, -10f);
+            gameObject.transform.position = new Vector3(1000000000f, 10000000f, 1f);
+        }
+        else if (Input.GetKeyDown("space") && isHidden)
+        {
+            isHidden = false;
+            lightController.isHidden = false;
+            speed = 2.0f;
+            gameObject.transform.position = tempLocation;
+        }
     }
 
     void FixedUpdate()
@@ -101,7 +129,10 @@ public class PlayerController : MonoBehaviour
             ChangeAnimationState(PLAYER_IDLE);
             stepTimer = 0.0f;
         }
-        camera.transform.position = new Vector3(transform.position.x, transform.position.y, -10f);
+        if (!isHidden)
+        {
+            camera.transform.position = new Vector3(transform.position.x, transform.position.y, -10f);
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -162,7 +193,20 @@ public class PlayerController : MonoBehaviour
                 SceneManager.LoadScene("End");
             }
         }
+        if (other.CompareTag("Sarcophagus"))
+        {
+            canHide = true;
+            sarLocation = new Vector3 (other.transform.position.x, other.transform.position.y, -10f) ;
+        }
 
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Sarcophagus"))
+        {
+            canHide = false;
+        }
     }
 
     //Animation state changer
