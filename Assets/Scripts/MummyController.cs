@@ -21,12 +21,15 @@ public class MummyController : MonoBehaviour
     public Vector2[] patrolPoints;
     private int currentPatrolPointIndex = 0;
 
+    private AudioSource audioSource;
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         animator.SetTrigger("StartPatrol");
+        audioSource = GetComponent<AudioSource>();
     }
 
 void Update()
@@ -63,6 +66,7 @@ void Update()
         // If there is no wall between mummy and player, start chasing if player is within field of view
         if (angleToPlayer < fieldOfView / 2 && distanceToPlayer < visionRange)
         {
+            audioSource.Play();
             isChasing = true;
             animator.SetTrigger("StartChase");
         }
