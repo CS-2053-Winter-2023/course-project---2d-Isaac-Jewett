@@ -19,6 +19,7 @@ TagManager:
   - Door
   - Key
   - Upgrade
+  - Waypoint
   layers:
   - Default
   - TransparentFX
