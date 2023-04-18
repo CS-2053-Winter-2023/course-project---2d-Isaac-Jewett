@@ -27,68 +27,62 @@ public class MummyController : MonoBehaviour
         animator.SetTrigger("StartPatrol");
     }
 
-    void Update()
+void Update()
+{
+    // Flip the sprite based on the velocity
+    if (rb.velocity.x > 0)
     {
-        Vector2 directionToPlayer = (player.position - transform.position).normalized;
-        float angleToPlayer = Vector2.Angle(frontDirection.up, directionToPlayer); // Use child object's forward direction
-        float distanceToPlayer = Vector2.Distance(transform.position, player.position);
-        Debug.DrawRay(transform.position, directionToPlayer * visionRange, Color.red);
+        transform.localScale = new Vector3(6, 6, 1); // Reset the object's scale
+    }
+    else if (rb.velocity.x < 0)
+    {
+        transform.localScale = new Vector3(-6, 6, 1); // Flip the object horizontally
+    }
 
-        if (isChasing)
+    Vector2 directionToPlayer = (player.position - transform.position).normalized;
+    float angleToPlayer = Vector2.Angle(frontDirection.up, directionToPlayer); // Use child object's forward direction
+    float distanceToPlayer = Vector2.Distance(transform.position, player.position);
+
+    // Draw a line between the mummy and player to check for walls
+    Debug.DrawLine(transform.position, player.position, Color.blue);
+
+    // Use LayerMask to only detect walls
+    int layerMask = LayerMask.GetMask("Wall");
+
+    // Check for walls between mummy and player
+
+    if ((rb.velocity.x <= 0.1 && rb.velocity.x >= -0.1) || (rb.velocity.y <= 0.1 && rb.velocity.y >= -0.1))
+    {
+        isChasing = false;
+        animator.SetTrigger("EndChase");
+    }
+    else
+    {
+        // If there is no wall between mummy and player, start chasing if player is within field of view
+        if (angleToPlayer < fieldOfView / 2 && distanceToPlayer < visionRange)
         {
-            float angle = Mathf.Atan2(directionToPlayer.y, directionToPlayer.x) * Mathf.Rad2Deg;
-
-            if (angle > 180 || angle < -180)
-            {
-                transform.localScale = new Vector3(6, -6, 1); // Flip the object horizontally
-            }
-            else
-            {
-                transform.localScale = new Vector3(6, 6, 1); // Reset the object's scale
-            }
-
-            rb.velocity = directionToPlayer * chaseSpeed;
-        }
-        else
-        {
-            // Raycast to detect if there is a wall between the mummy and the player
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, directionToPlayer, visionRange, LayerMask.GetMask("Default"));
-
-            if (hit.collider != null)
-            {
-
-                // If the raycast hits the player and the player is within field of view, start chasing
-                if (hit.collider.CompareTag("Player") && angleToPlayer < fieldOfView / 2)
-                {   
-                    Debug.Log("Chasing player");
-                    isChasing = true;
-                    animator.SetTrigger("StartChase");
-                }
-            }
-
-            if (!isChasing)
-            {
-                if (Vector2.Distance(transform.position, patrolPoints[currentPatrolPointIndex]) < 0.1f)
-                {
-                    currentPatrolPointIndex++;
-                    if (currentPatrolPointIndex >= patrolPoints.Length)
-                    {
-                        currentPatrolPointIndex = 0;
-                    }
-                }
-
-                Vector2 directionToPatrolPoint = (patrolPoints[currentPatrolPointIndex] - (Vector2)transform.position).normalized;
-                rb.velocity = directionToPatrolPoint * MummySpeed;
-
-                if (rb.velocity.x > 0)
-                {
-                    transform.localScale = new Vector3(6, 6, 1); // Reset the object's scale
-                }
-                else if (rb.velocity.x < 0)
-                {
-                    transform.localScale = new Vector3(-6, 6, 1); // Flip the object horizontally
-                }
-            }
+            isChasing = true;
+            animator.SetTrigger("StartChase");
         }
     }
+
+    if (!isChasing)
+    {
+        if (Vector2.Distance(transform.position, patrolPoints[currentPatrolPointIndex]) < 0.1f)
+        {
+            currentPatrolPointIndex++;
+            if (currentPatrolPointIndex >= patrolPoints.Length)
+            {
+                currentPatrolPointIndex = 0;
+            }
+        }
+
+        Vector2 directionToPatrolPoint = (patrolPoints[currentPatrolPointIndex] - (Vector2)transform.position).normalized;
+        rb.velocity = directionToPatrolPoint * MummySpeed;
+    }
+    else
+    {
+        rb.velocity = directionToPlayer * chaseSpeed;
+    }
+}
 }
