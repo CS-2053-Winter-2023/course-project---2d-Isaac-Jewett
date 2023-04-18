@@ -2987,6 +2987,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 5837767963545744207, guid: 28dec2f1303f0a24aae68c87b218b00f, type: 3}
+      propertyPath: MummySpeed
+      value: 1.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5837767963545744207, guid: 28dec2f1303f0a24aae68c87b218b00f, type: 3}
       propertyPath: patrolPoints.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -3420,6 +3424,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5837767963545744207, guid: 28dec2f1303f0a24aae68c87b218b00f, type: 3}
+      propertyPath: MummySpeed
+      value: 1.6
+      objectReference: {fileID: 0}
     - target: {fileID: 5837767963545744207, guid: 28dec2f1303f0a24aae68c87b218b00f, type: 3}
       propertyPath: patrolPoints.Array.size
       value: 2
