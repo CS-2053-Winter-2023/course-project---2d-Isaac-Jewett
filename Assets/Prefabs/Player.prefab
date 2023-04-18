@@ -103,6 +103,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loreEntry: {fileID: 0}
   exitTrigger: {fileID: 0}
+  waypoint: {fileID: 4569688210133874381, guid: dd4e84f0ab38cf345b770280c999a214, type: 3}
   speed: 2
   speedLimiter: 0.7
   camera: {fileID: 0}

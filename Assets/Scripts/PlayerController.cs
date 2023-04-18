@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
 
     public GameObject loreEntry;
     public GameObject exitTrigger;
+    public GameObject waypoint;
     private LoreController loreController;
     private MummyController mummyController;
 
@@ -73,6 +74,10 @@ public class PlayerController : MonoBehaviour
     private bool gotUpgrade;
     private bool canBeam;
 
+    //Waypoint stuff
+    private bool gotWaypoints;
+    private int count;
+
     Level1Mummy[] myScriptReferences;
     public GameObject[] mummies;
 
@@ -93,6 +98,12 @@ public class PlayerController : MonoBehaviour
         canHide = false;
         gotKey = false;
         gotUpgrade = false;
+        gotWaypoints = false;
+        count = 0;
+        if (SceneManager.GetActiveScene().name == "Room6" || SceneManager.GetActiveScene().name == "Room7" || SceneManager.GetActiveScene().name == "Room8")
+        {
+            gotWaypoints = true;
+        }
         if (SceneManager.GetActiveScene().name == "Room7" || SceneManager.GetActiveScene().name == "Room8")
         {
             gotUpgrade = true;
@@ -173,6 +184,10 @@ public class PlayerController : MonoBehaviour
                 canBeam = true;
 
             }
+        }
+        if (Input.GetKeyDown("r") && gotWaypoints)
+        {
+            GameObject newWaypoint = Instantiate(waypoint, transform.position, waypoint.transform.rotation);
         }
     }
 
@@ -415,6 +430,20 @@ public class PlayerController : MonoBehaviour
         {
             gotUpgrade = true;
             Destroy(other.gameObject);
+        }
+
+        //Picking up the Waypoint upgrade
+        if (other.CompareTag("Waypoint"))
+        {
+            if (!gotWaypoints)
+            {
+                count++;
+                if (count > 10)
+                {
+                    gotWaypoints = true;
+                }
+                Destroy(other.gameObject);
+            }
         }
 
     }
