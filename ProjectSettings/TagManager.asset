@@ -3,6 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
+<<<<<<< Updated upstream
   tags:
   - Lore
   - TopT
@@ -20,6 +21,9 @@ TagManager:
   - Key
   - Upgrade
   - Waypoint
+=======
+  tags: []
+>>>>>>> Stashed changes
   layers:
   - Default
   - TransparentFX
@@ -27,9 +31,9 @@ TagManager:
   - 
   - Water
   - UI
-  - Wall
-  - Player
-  - Mummy
+  - 
+  - 
+  - 
   - 
   - 
   - 
@@ -54,9 +58,6 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Background
-    uniqueID: 147130449
-    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
