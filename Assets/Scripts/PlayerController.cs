@@ -34,7 +34,6 @@ public class PlayerController : MonoBehaviour
     string currentState;
     const string PLAYER_IDLE = "Player_Idle";
     const string PLAYER_RIGHT = "Player_Right";
-    const string PLAYER_LEFT = "Player_Left";
     const string PLAYER_UP = "Player_Up";
     const string PLAYER_DOWN = "Player_Down";
     const string DOOR_OPEN = "DoorOpening";
@@ -292,9 +291,15 @@ public class PlayerController : MonoBehaviour
         //Death handling
         if (other.CompareTag("Mummy"))
         {
-            audioSource.PlayOneShot(deathSFX, 0.6F);
+            //Stop player movement
             speed = 0;
             isDying = true;
+
+            //Stop mummy movement
+            mummyController = other.GetComponent<MummyController>();
+            mummyController.chaseSpeed = 0;
+            mummyController.MummySpeed = 0;
+            
             
             //Mummy Hit animation
             Animator animMummy = other.GetComponent<Animator>();
@@ -317,11 +322,13 @@ public class PlayerController : MonoBehaviour
                 {
                     anim.Play(DEATH);
                     rend.flipX = false;
+                    audioSource.PlayOneShot(deathSFX, 0.6F);
                 }
                 else
                 {
                     anim.Play(DEATH);
                     rend.flipX = true;
+                    audioSource.PlayOneShot(deathSFX, 0.6F);
                 }
                 yield return new WaitForSeconds(3f);
                 SceneManager.LoadScene("Credits");
