@@ -46,6 +46,8 @@ public class LoreController : MonoBehaviour
             foreach (Level1Mummy myScript in myScriptReferences)
             {
                 myScript.MummyExists = true;
+                myScript.rb.simulated = true;
+
             }
         }
 

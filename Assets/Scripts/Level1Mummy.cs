@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Rendering.Universal;
 
 public class Level1Mummy : MonoBehaviour
 {
@@ -17,19 +18,20 @@ public class Level1Mummy : MonoBehaviour
     public int MummyLevel;
     public int MummyStatic;
     private Transform player;
-
+    private AudioSource audioSource;
+    public bool oneTimeBool;
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
 
         Mummy.GetComponent<Renderer>().enabled = false;
         rb = GetComponent<Rigidbody2D>();
-        if (SceneManager.GetActiveScene().name == "Room8")  {
-            rb.simulated = false;
-        }
+        rb.simulated = false;
         animator = GetComponent<Animator>();
         MummyStatic = MummyLevel;
         animator.SetTrigger("StartPatrol");
+        audioSource = GetComponent<AudioSource>();
+        oneTimeBool = true;
     }
 
     void Update()
@@ -53,8 +55,14 @@ public class Level1Mummy : MonoBehaviour
         }
 
         if (MummyExists)    {
+            rb.simulated = true;
             if (MummyLevel == 0)    {
                 Mummy.GetComponent<Renderer>().enabled = true;
+                if (oneTimeBool)    {
+                    audioSource.Play();
+                    oneTimeBool = false;
+                }
+
                 if (Vector2.Distance(transform.position, patrolPoints[currentPatrolPointIndex]) < 0.1f)
                 {
                     currentPatrolPointIndex++;

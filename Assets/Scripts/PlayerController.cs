@@ -293,6 +293,7 @@ public class PlayerController : MonoBehaviour
             {
                 if (myScript.MummyLevel == 1)    {
                     myScript.MummyLevel = 0;
+                    myScript.rb.simulated = true;
 
                 }
             }
