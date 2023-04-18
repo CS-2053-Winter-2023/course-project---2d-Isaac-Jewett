@@ -11,17 +11,17 @@ public class Level1Mummy : MonoBehaviour
     public Vector2[] patrolPoints;
     private int currentPatrolPointIndex = 0;
     public GameObject Mummy;
-    private Transform MummySprite;
     public bool MummyExists = false;
     public int MummyLevel;
     public int MummyStatic;
+
     void Start()
     {
-        MummySprite = transform.Find("MummySprite");
         Mummy.GetComponent<Renderer>().enabled = false;
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         MummyStatic = MummyLevel;
+        animator.SetTrigger("StartPatrol");
     }
 
     void Update()
@@ -48,11 +48,11 @@ public class Level1Mummy : MonoBehaviour
 
                 if (rb.velocity.x > 0)
                 {
-                    MummySprite.GetComponent<SpriteRenderer>().flipX = false;
+                    transform.localScale = new Vector3(6, 6, 1); // Reset the object's scale
                 }
                 else if (rb.velocity.x < 0)
                 {
-                    MummySprite.GetComponent<SpriteRenderer>().flipX = true;
+                    transform.localScale = new Vector3(-6, 6, 1); // Flip the object horizontally
                 }
             }
         }

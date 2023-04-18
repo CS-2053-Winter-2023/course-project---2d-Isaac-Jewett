@@ -32,6 +32,9 @@ public class PlayerController : MonoBehaviour
     const string PLAYER_UP = "Player_Up";
     const string PLAYER_DOWN = "Player_Down";
 
+
+    Level1Mummy[] myScriptReferences;
+
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
@@ -41,6 +44,8 @@ public class PlayerController : MonoBehaviour
         }
         rend = GetComponent<SpriteRenderer>();
         anim = gameObject.GetComponent<Animator>();
+        myScriptReferences = FindObjectsOfType<Level1Mummy>();
+
     }
 
     // Update is called once per frame
@@ -92,6 +97,30 @@ public class PlayerController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        if (other.CompareTag("TopT"))   {
+            foreach (Level1Mummy myScript in myScriptReferences)
+            {
+                if (myScript.MummyLevel == 3)    {
+                    myScript.MummyLevel = 0;
+                }
+            }            
+        }
+        if (other.CompareTag("MidT"))   {
+            foreach (Level1Mummy myScript in myScriptReferences)
+            {
+                if (myScript.MummyLevel == 2)    {
+                    myScript.MummyLevel = 0;
+                }
+            }
+        }
+        if (other.CompareTag("LowT"))   {
+            foreach (Level1Mummy myScript in myScriptReferences)
+            {
+                if (myScript.MummyLevel == 1)    {
+                    myScript.MummyLevel = 0;
+                }
+            }
+        }
         if (other.CompareTag("Lore")) {
             loreController.SetLoreActive();
         }
