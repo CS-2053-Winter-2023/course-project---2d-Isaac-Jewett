@@ -36,7 +36,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Room7.unity
     guid: dc663d5903cf6204faac82b398f19a84
   - enabled: 1
-    path: Assets/Scenes/Room8.unity
+    path: Assets/Scenes/Room8Old.unity
     guid: b69ec5960c28710408596e891cc7fce3
   - enabled: 1
     path: Assets/Scenes/JournalEntries.unity
