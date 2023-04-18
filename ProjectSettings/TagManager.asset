@@ -20,6 +20,7 @@ TagManager:
   - Key
   - Upgrade
   - Waypoint
+  - Level1Mummy
   layers:
   - Default
   - TransparentFX
